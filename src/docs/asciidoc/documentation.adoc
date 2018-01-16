@@ -68,17 +68,17 @@ a| 教程
 a| jMonkeyEngine SDK
 a| 其他文档
 
-a| <<jme3/beginners/index#,jME3初级教程>>
+a| <<beginners/index#,jME3初级教程>>
 a| <<sdk/index#,jMonkeyEngine SDK 文档和视频教程>>
 a| link:http://javadoc.jmonkeyengine.org/[Full API JavaDoc]
 
-a| <<jme3/advanced/index#,jME3中级教程>>
+a| <<advanced/index#,jME3中级教程>>
 a| <<sdk/comic#,jMonkeyEngine SDK - 漫画 :-)>>
 a| <<jme3/external/blender#,Blender建模指南>>
 
-a| <<jme3/senior/index#,jME3进阶教程>>
+a| <<advanced/index#,jME3进阶教程>>
 <a|
-a| <<jme3/faq#,FAQ>>
+a| <<faq#,FAQ>>
 
 |===
 
@@ -87,11 +87,11 @@ a| <<jme3/faq#,FAQ>>
 
 想给jME3贡献新的特性和功能吗？如果你是一名熟练的Java开发者，请看下列页面：
 
-*  了解已有的<<jme3/contributions#,贡献>>
+*  了解已有的<<contributions#,贡献>>
 *  link:https://github.com/jMonkeyEngine/jmonkeyengine/blob/master/CONTRIBUTING.md[阅读贡献者手册]
 *  link:https://github.com/jMonkeyEngine/wiki[成为维基编辑者]
 *  link:http://hub.jmonkeyengine.org/c/contribution-depot-jme3[加入官方社区的讨论]
-*  <<jme3/jme3_source_structure#,学习jME3源码架构>>
+*  <<jme3_source_structure#,学习jME3源码架构>>
 *  <<sdk#development,开发jME SDK插件以及可视化编辑器>>
 *  <<report_bugs#,报告bug &amp; 提交补丁>>
 
