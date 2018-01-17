@@ -1,0 +1,253 @@
+= Wiki目录结构计划
+:author: jmecn
+:revnumber:
+:revdate: 2018-01-17 16:30:18
+:relfileprefix:
+:imagesdir:
+:experimental:
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+I'm planning to reorganize wiki contents, like this:
+
+**1. Getting-Start**
+
+This part will help user to download, install, run the Engine and SDK.
+
+**2. Beginner's tutorials**
+
+This part will go througth the first 13 HelloXX tutorials.
+
+**3. SDK**
+
+This part will tell user how to use jMonkeyEngine SDK. Such as:
+
+* creating projects
+* import and view 3d models
+* use terrain editor
+* ..
+* logging and debug
+* applcation deployment
+
+**4. Engine**
+
+This part should introduce the features of the Engine to user.
+
+**5. Asset-Pipeline**
+
+This part is especially for game artist, should telling about how to make
+jMonkeyEngine compatible game assets.
+
+**6. Programming**
+
+This part is especially for game programmer, should dive deep into jME3 and
+tell how to tinker with the engine.
+
+Most contents of this part came from former "advanced" folder.
+
+**7. Shader**
+
+This part is especially for technique artist, should telling about how create
+jMonkeyEngine compatible materials and shaders.
+
+Maybe I should combine this part into "5. Asset-Pipeline".
+
+**8. Platforms**
+
+This part should tell about the experience and pitfalls when developing on
+different platforms.
+
+* Windows
+* Linux
+* MacOS
+* Android
+* iOS
+* Steam
+* VR
+* HTML5 (?)
+
+**9. Builds**
+
+This part is for recording history of different jME3 builds. Maybe one day we
+can really have a Roadmap here.
+
+Of couse we can just go and read git commit history, but I still prefer a simple
+feature list for each build.
+
+**10. Contribution**
+
+This part tells how to contribute to jME3:
+
+* Wiki
+* Engine
+* SDK
+
+Also it should tell user how to find the already exist contributes on Github.com。
+
+
+Example structures:
+
+[source]
+----
+Getting-Start/
+Getting-Start/Download/
+Getting-Start/Download/Source.adoc
+Getting-Start/Download/Engine.adoc
+Getting-Start/Download/SDK.adoc
+Getting-Start/Install/
+Getting-Start/Install/SDK.adoc
+Getting-Start/Install/With-Android-Studio.adoc
+Getting-Start/Install/With-Commandline.adoc
+Getting-Start/Install/With-Eclipse.adoc
+Getting-Start/Install/With-Gradle.adoc
+Getting-Start/Install/With-Intellij-IDEA.adoc
+Getting-Start/Install/With-Maven.adoc
+Getting-Start/Install/With-Netbeans.adoc
+Getting-Start/Run-Demos.adoc
+Getting-Start/Requirements.adoc
+Getting-Start/License.adoc
+Getting-Start/Team.adoc
+Getting-Start/Terminology.adoc
+Getting-Start/FAQ.adoc
+Beginner/
+Beginner/Hello_SimpleApplication.adoc
+Beginner/Hello_Node.adoc
+Beginner/Hello_Asset.adoc
+Beginner/Hello_Loop.adoc
+Beginner/Hello_Input.adoc
+Beginner/Hello_Material.adoc
+Beginner/Hello_Animation.adoc
+Beginner/Hello_Picking.adoc
+Beginner/Hello_Collision.adoc
+Beginner/Hello_Terrain.adoc
+Beginner/Hello_Audio.adoc
+Beginner/Hello_Effects.adoc
+Beginner/Hello_Physics.adoc
+SDK/
+SDK/Create-Project.adoc
+SDK/Code-Editor.adoc
+SDK/Import-3D-Model.adoc
+SDK/Scene-Composer.adoc
+SDK/Play-Audio.adoc
+SDK/..
+SDK/Deployment/
+SDK/Deployment/PC.adoc
+SDK/Deployment/Android.adoc
+SDK/Deployment/iOS.adoc
+Engine/
+Engine/Animation/
+Engine/Animation/Overview.adoc
+Engine/Animation/Animation.adoc
+Engine/Animation/Motion-Path.adoc
+Engine/Animation/Cinematics.adoc
+Engine/Animation/Skeleton.adoc
+Engine/Animation/..
+Engine/Asset/
+Engine/Asset/Overview.adoc
+Engine/Asset/AssetManager.adoc
+Engine/Asset/AssetPackage.adoc
+Engine/Asset/Asset-Pipeline.adoc
+Engine/GUI-And-HUD/
+Engine/GUI-And-HUD/Nifty-GUI/..
+Engine/GUI-And-HUD/Lemur/..
+Engine/Input/
+Engine/Input/ActionListener.adoc
+Engine/Input/AnalogListener.adoc
+Engine/Input/RawInputListener.adoc
+Engine/Input/TouchListener.adoc
+Engine/Input/Device/Mouse.adoc
+Engine/Input/Device/Keyborad.adoc
+Engine/Input/Device/Touch-screen.adoc
+Engine/Input/Device/Joystick.adoc
+Engine/Input/Device/..
+Engine/Math/
+Engine/Math/..
+Engine/Media/Audio.adoc
+Engine/Media/Video.adoc
+Engine/Media/..
+Engine/Rendering/
+Engine/Rendering/Overview.adoc
+Engine/Rendering/Materials/..
+Engine/Rendering/LightingAndShadow/..
+Engine/Rendering/ParticleSystem/..
+Engine/Rendering/Post-Process-Effects/..
+Engine/Rendering/Shaders/..
+Engine/Scene/
+Engine/Scene/Scenegraph.adoc
+Engine/Scene/Spatial.adoc
+Engine/Scene/Node.adoc
+Engine/Scene/Geometry.adoc
+Engine/Scene/..
+Engine/Terrain/
+Engine/Terrain/Terrain.adoc
+Engine/Terrain/Terrain-Collision.adoc
+Engine/Terrain/Terrain-Lighting.adoc
+Engine/Physics/
+Engine/Physics/BulletAppState.adoc
+Engine/Physics/..
+Engine/Performance/
+Engine/Performance/Statusview.adoc
+Engine/Performance/Profile.adoc
+Engine/Performance/..
+Engine/Networking/..
+Asset-Pipeline/Overview.adoc
+Asset-Pipeline/File-Format.adoc
+Asset-Pipeline/Photoshop/..
+Asset-Pipeline/Blender/..
+Asset-Pipeline/3DSMAX/..
+Asset-Pipeline/Maya/..
+Programming/
+Programming/Asset/
+Programming/Asset/AssetLocator.adoc
+Programming/Asset/AssetLoader.adoc
+Programming/Asset/CustomLocator.adoc
+Programming/Asset/CustomLoader.adoc
+Programming/Asset/AssetConfig.adoc
+Programming/Asset/AssetCache.adoc
+Programming/Asset/AssetEventListener.adoc
+Programming/Camera/
+Programming/Camera/FlyByCamera.adoc
+Programming/Camera/ChaseCam.adoc
+Programming/Camera/..
+Programming/Data-Structure/
+Programming/Data-Structure/Mesh.adoc
+Programming/Data-Structure/Animation.adoc
+Programming/Data-Structure/..
+Programming/Game-Logic/
+Programming/Game-Logic/Main-Loop.adoc
+Programming/Game-Logic/AppState.adoc
+Programming/Game-Logic/Control.adoc
+Programming/Game-Logic/CustomControl.adoc
+Programming/Game-Logic/updateGeometryLogic.adoc
+Programming/Game-Logic/..
+Programming/Graphcis/
+Programming/Graphcis/Rendering-pipeline.adoc
+Programming/Graphcis/RenderState.adoc
+Programming/Graphcis/RenderBucket.adoc
+Programming/Graphcis/Viewports.adoc
+Programming/Graphics/..
+Programming/Logging/..
+Programming/Networking/..
+Programming/Scripting/..
+Shader/
+Shader/Material-Define.adoc
+Shader/globals.adoc
+Shader/uniforms.adoc
+Shader/attributes.adoc
+Shader/glsllib.adoc
+Shader/Shader-Node.adoc
+Shader/..
+Platforms/
+Platforms/Desktop/..
+Platforms/Mobile/..
+Platforms/Vistual Reality/..
+Builds/
+Builds/JME3.0.adoc
+Builds/JME3.1.adoc
+Builds/JME3.2.adoc
+Builds/..
+Contribution/
+Contribution/How-to.adoc
+Contribution/Wiki/..
+Contribution/Engine/..
+Contribution/SDK/..
+----
