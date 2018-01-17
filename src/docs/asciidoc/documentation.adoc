@@ -1,5 +1,5 @@
 = jMonkeyEngine 说明文档
-:author: yanmaoyuan
+:author:  (翻译 jmecn)
 :revnumber: 1.0
 :revdate: 2018/01/15 16:41
 :keywords: documentation, sdk, install
@@ -71,9 +71,9 @@ a| <<beginner/index#,jME3初级教程>>
 a| <<sdk/index#,jMonkeyEngine SDK 文档和视频教程>>
 a| link:http://javadoc.jmonkeyengine.org/[Full API JavaDoc]
 
-a| <<advanced/index#,jME3中级教程>>
+a| <<intermediate/index#,jME3中级教程>>
 a| <<sdk/comic#,jMonkeyEngine SDK - 漫画 :-)>>
-a| <<jme3/external/blender#,Blender建模指南>>
+a| <<external/blender#,Blender建模指南>>
 
 a| <<advanced/index#,jME3进阶教程>>
 <a|
