@@ -12,7 +12,7 @@ TIP: This is an Admonition. You will see many of these scattered throughout the 
 
 == 下载和安装
 
-*在安装之前，请查阅<<bsd_license#,许可证>>、<<jme3/features#,jME3功能说明>>和<<install/requirements#,开发需求>>，* 然后选择其中一个选项：
+*在安装之前，请查阅<<bsd_license#,许可证>>、<<features#,jME3功能说明>>和<<install/requirements#,开发需求>>，* 然后选择其中一个选项：
 [cols="4", options="header"]
 |===
 

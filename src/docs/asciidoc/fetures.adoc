@@ -6,7 +6,7 @@
 :imagesdir: ..
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-See also: link:http://www.jmonkeyengine.com/forum/index.php?topic=13057.0[Feature comparison] and <<jme3/requirements#,requirements>>.
+See also: link:http://www.jmonkeyengine.com/forum/index.php?topic=13057.0[Feature comparison] and <<requirements#,requirements>>.
 
 == Software Development Kit: jMonkeyEngine SDK
 
@@ -14,7 +14,7 @@ See also: link:http://www.jmonkeyengine.com/forum/index.php?topic=13057.0[Featur
 **  Preconfigured classpath
 **  Bundled with compatible JDK
 **  link:http://hub.jmonkeyengine.org/forum/topic/bundling-blender[Bundled with Blender conversion tools and more]
-**  <<jme3/advanced/asset_manager#,Asset Manager>> for loading multi-media files and 3D models +including asset name code completion
+**  <<advanced/asset_manager#,Asset Manager>> for loading multi-media files and 3D models +including asset name code completion
 **  <<sdk/default_build_script#,Non-proprietary Ant build scripts>>
 **  jME3-ready Javadoc popups, <<sdk/sample_code#,sample code projects>>, and code snippet palette
 
@@ -27,15 +27,15 @@ See also: link:http://www.jmonkeyengine.com/forum/index.php?topic=13057.0[Featur
 **  <<sdk/material_editing#,Material editor>>
 **  Shader Node editor
 **  <<sdk/terrain_editor#,Terrain generation, painting, and editing>>
-**  <<jme3/external/fonts#,Custom font creator>>
+**  <<external/fonts#,Custom font creator>>
 **  <<sdk/asset_packs#,Support for custom Asset Packs with your models, textures, and more>>
 **  <<sdk/neotexture#,Procedural texture creator (NeoTexture)>>
-**  <<jme3/advanced/level_of_detail#,Level of Detail (LOD) generator>>
+**  <<advanced/level_of_detail#,Level of Detail (LOD) generator>>
 **  <<sdk#,... and much more...>>
 
 *  <<sdk/application_deployment#,Deployment>>
 **  Generates desktop executables for Win, Mac, Linux
-**  Generates mobile executables for <<jme3/android#,Android>>, iOS support is in the works.
+**  Generates mobile executables for <<android#,Android>>, iOS support is in the works.
 **  Generates JNLP WebStart and Java Browser Applets
 
 *  <<sdk/whynoteclipse#,Based on the NetBeans Platform>>
@@ -52,7 +52,7 @@ See also: link:http://www.jmonkeyengine.com/forum/index.php?topic=13057.0[Featur
 *  <<jme3/advanced/physics/bullet_multithreading#,多线程物理>>
 *  <<jme3/advanced/physics/index#create_a_collisionshape,精确网格碰撞>>
 
-== Supported Formats
+== 支持的格式
 
 *  Models: Blender (.blend)
 *  Models: Ogre3D model (.mesh.xml, .skeleton.xml, .material), Ogre3D dotScene (.scene)
@@ -68,15 +68,15 @@ See also: link:http://www.jmonkeyengine.com/forum/index.php?topic=13057.0[Featur
 *  jME3 filter post processors: .j3f
 
 
-== Shaders
+== 着色器
 
-*  GLSL support
+*  支持 GLSL
 *  Shader libraries
 *  Shader permutations
-*  <<jme3/advanced/jme3_shadernodes#,Shader Nodes>>
+*  <<advanced/jme3_shadernodes#,Shader Nodes>>
 
 
-== Material Lighting
+== 光照材质
 
 *  Per-pixel lighting
 *  Multi-pass lighting
@@ -91,7 +91,7 @@ See also: link:http://www.jmonkeyengine.com/forum/index.php?topic=13057.0[Featur
 *  Reflection
 
 
-== Material Textures
+== 纹理材质
 
 *  Texturing
 ***  material colors (ambient, diffuse, specular/shininess, glow),
@@ -108,7 +108,7 @@ See also: link:http://www.jmonkeyengine.com/forum/index.php?topic=13057.0[Featur
 *  link:http://hub.jmonkeyengine.org/forum/topic/textureatlas-creation-and-packed-texture-handling-in-sdk/[Texture Atlas, handling of packed Textures]
 
 
-== Asset System
+== 资产系统
 
 *  Asset importing
 **  Animation
@@ -123,41 +123,42 @@ See also: link:http://www.jmonkeyengine.com/forum/index.php?topic=13057.0[Featur
 *  Sharable AssetPacks
 
 
-== Special Effects
+== 特效
 
-*  <<jme3/advanced/particle_emitters#,Particles: Smoke, fire, explosions, etc>>
-*  <<jme3/advanced/effects_overview#,Post processing / 2D Filter Effects>>
-**  Reflective Water
-**  Shadow mapping
-**  High Dynamic Range rendering
-**  Screen Space Ambient Occlusion
+*  <<advanced/particle_emitters#,粒子特效: Smoke, fire, explosions, etc>>
+*  <<advanced/effects_overview#,后期处理 / 2D Filter Effects>>
+**  可反射水面
+**  阴影贴图
+**  动态高光渲染(HDR)
+**  屏幕空间环境光遮蔽(SSAO)
 **  Light Scattering
-**  Cartoon Effect
-**  Fog
-**  Bloom
-**  Depth of Field Blur
+**  卡通边缘
+**  雾效(Fog)
+**  发光(Bloom)
+**  景深(Depth of Field)
+**  模糊(Blur)
 
 
 
-== Terrain
+== 地形
 
-*  <<jme3/advanced/terrain#,Geomipmapped hightmap terrain>>
-*  <<jme3/advanced/ogrecompatibility#,Import Ogre3D dotScene format>>
-*  <<jme3/advanced/sky#,SkyBox and SkyDome>>
-*  Terrain lighting
+*  <<advanced/terrain#,高度图地形>>
+*  <<advanced/ogrecompatibility#,可兼容 Ogre3D 的场景格式>>
+*  <<advanced/sky#,天空盒/天空穹>>
+*  地形光照
 
 
 == GUI / HUD
 
-*  <<jme3/advanced/hud#,Orthogonal (Billboard) node>>
-*  <<jme3/advanced/nifty_gui#,Nifty GUI integration>>
+*  <<advanced/hud#,Orthogonal (Billboard) node>>
+*  <<advanced/nifty_gui#,集成 Nifty GUI>>
 
 
 == Miscellaneous
 
-*  <<jme3/advanced/application_states#,Application States>> and <<jme3/advanced/custom_controls#,Controls>> to implement <<jme3/advanced/update_loop#,game logic>>
-*  <<jme3/advanced/cinematics#,Cinematics and motion paths>>
-*  <<jme3/advanced/camera#,Camera System>>
+*  <<advanced/application_states#,Application States>> and <<jme3/advanced/custom_controls#,Controls>> to implement <<jme3/advanced/update_loop#,game logic>>
+*  <<advanced/cinematics#,Cinematics and motion paths>>
+*  <<advanced/camera#,Camera System>>
 **  Normal or parallel view
 **  Multiple views
 
@@ -168,6 +169,6 @@ See also: link:http://www.jmonkeyengine.com/forum/index.php?topic=13057.0[Featur
 
 
 
-== Networking
+== 多人联网
 
-*  <<jme3/advanced/networking#,SpiderMonkey API>>
+*  <<advanced/networking#,SpiderMonkey API>>
