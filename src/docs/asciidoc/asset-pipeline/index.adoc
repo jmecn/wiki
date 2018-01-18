@@ -1,0 +1,98 @@
+= 资产管线
+:author: yan
+:revnumber: 1.0
+:revdate: 2018-01-18 10:28:54
+:relfileprefix: ../
+:imagesdir: ..
+:experimental:
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+
+== 概述
+
+经常有朋友问这么几个问题：
+
+* 怎么用jME3显示3D模型？
+* 怎么用jME3显示一张图片？
+* 为什么发生AssetNotFoundException异常？
+* 我的模型为什么是黑漆漆的？
+
+先引用《游戏引擎架构》一书中对“工具及资产管道”的论述：
+
+[quote, 《游戏引擎架构》：工具及资产管道]
+----
+游戏本质上是多媒体应用。游戏引擎的输入数据形式广泛，例如三角网格、纹理位图、动画数据、音频文件等。所有源数据皆由美术人员使用数字内容创作（digital content creation, DCC）应用软件制作。
+1. DCC应用软件所使用的数据格式，鲜有适合直接用于游戏中的，主因有二。
+
+2. DCC软件在内存中的数据模型，通常比游戏所需的复杂得多。例如，Maya的场景节点，以有向非循环图（directed acyclic graph, DAG）储存，包含复杂的互相连接网络。Maya也储存了该文件的所有编辑历史记录。Maya场景中每个物体的位置、方向、比例，都以完整的三维变换表示，此变换又由平移（translation）、旋转（rotation）、缩放（scale）、切变（shear）所组成。游戏引擎通常只需要这些信息的一小部分就能在游戏中渲染模型。
+
+在游戏中读取DCC软件格式的文件，其速度通常过慢。而有些格式更是不公开的专有格式。因此，DCC软件制作的数据，通常要导出为容易读取的标准格式或自定义格式，以便在游戏中使用。
+
+当数据自DCC软件导出后，有时必须再处理，才能放在游戏引擎里使用。若工作室要为游戏开发多个平台，这些中间文件必须按平台做不同处理。例如，三维网格（3D mesh）数据可能导出为某种中间文件格式，如XML或简单的二进制格式；之后，可能会合并相同材质的网格，或把太大的网格分割成引擎容许的大小；最后，为方便每个平台读取，用最合适的方式组织网格数据，并包装成内存影像。
+
+从DCC到游戏引擎的管道，有时候称为资产调节管道（asset conditioning pipeline）。每个引擎都有某种形式的资产调节管道。
+----
+
+这些问题背后涉及到游戏引擎的资产管理与文件系统。具体来说，就关于如何把美术人员制作的资源文件导入到游戏引擎中使用的问题。包括：
+
+* 把美术人员制作的源数据转化为游戏引擎的专有数据；
+* 在项目中建立标准资产目录结构，管理游戏资产；
+* 通过游戏引擎提供的API来导入游戏资产；
+* 游戏资产的打包、加密、发布；
+* 为美术人员开发专用工具，简化内容创作、文件转换等工作；
+* 等等..
+
+== 资产管道
+
+这部分的内容比较偏向美术制作，介绍如何产生适用于JME3的游戏资产。
+
+* http://blog.jmecn.net/multi-media-asset-pipeline/[多媒体资产管道]
+* http://blog.jmecn.net/create-3d-test-model/[制作3D测试模型]
+* http://blog.jmecn.net/convert-blend-to-j3o-with-sdk/[用jMonkeyEngine SDK转换j3o]
+* http://blog.jmecn.net/convert-blend-to-j3o-with-jmonkeybuilder/[用jMonkeyBuilder转换j3o]
+* Bledner + jME3 工作流
+* 3dsmax + jME3 工作流
+* Maya + jME3 工作流
+
+== 导入游戏资产
+
+这部分将讲解如何创建 JME3 资产目录结构，并使用 AssetManager 来导入不同类型的资产。
+
+* http://blog.jmecn.net/manage-assets-in-other-ides/[在其他IDE中管理资产]
+* http://blog.jmecn.net/assetmanager-overview/[AssetManager概述]
+* http://blog.jmecn.net/load-3d-models/[加载3D模型]
+* http://blog.jmecn.net/load-materials/[加载材质]
+* http://blog.jmecn.net/load-textures/[加载纹理]
+* http://blog.jmecn.net/load-fonts/[加载字体]
+* http://blog.jmecn.net/load-sounds/[加载音频文件]
+* http://blog.jmecn.net/loading-assets-from-custom-paths/[自定义资产路径]
+* http://blog.jmecn.net/common-exceptions-when-loading-assets/[常见异常]
+
+== AssetManager工作原理
+
+这部分将分析 AssetManager 的工作原理，介绍资源定位、资源解析、资源缓存等概念。
+
+* http://blog.jmecn.net/java-iostream/[Java I/O流]
+* http://blog.jmecn.net/asset-manager-working-flow/[AssetManager工作流程]
+* http://blog.jmecn.net/interfaces-of-asset-manager/[AssetManager接口介绍]
+* http://blog.jmecn.net/principle-of-asset-locator/[AssetLocator原理]
+* http://blog.jmecn.net/custom-assetlocator/[自定义AssetLocator]
+* http://blog.jmecn.net/custom-assetloader/[自定义AssetLoader]
+* http://blog.jmecn.net/asset-cache/[资产缓存]
+* http://blog.jmecn.net/asset-config[资产配置文件]
+
+== 导出和保存
+这部分将介绍如何把JME3中的数据结构保存到磁盘，生成j3o文件，或者其他自定义文件格式。
+
+* Java序列化机制
+* Savable接口
+* BinaryImportor
+* BinaryExportor
+
+== 最佳实践
+介绍在JME3中管理、加载游戏资产的一些最佳实践。
+
+* 工厂模式
+* 资源管理线程（异步加载）
+* 资产打包（zip、jar）
+* 纹理图集（TextureAtlas）

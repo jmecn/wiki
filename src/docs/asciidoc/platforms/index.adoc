@@ -1,0 +1,8 @@
+= 平台兼容性手册
+:author: yan
+:revnumber:
+:revdate: 2018-01-18 10:56:06
+:relfileprefix: ../
+:imagesdir: ..
+:experimental:
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]

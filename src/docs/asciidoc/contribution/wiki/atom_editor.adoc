@@ -2,8 +2,8 @@
 :author: mitm (翻译 jmecn)
 :revnumber:
 :revdate: 2018-01-16 13:44
-:relfileprefix: ../
-:imagesdir: ..
+:relfileprefix: ../../
+:imagesdir: ../..
 :experimental:
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
@@ -185,7 +185,7 @@ ifdef++::++env-github,env-browser[:outfilesuffix: .adoc]
 
 更多请查阅:
 
-<<zh-Hans-CN/wiki/wiki_header#,Wiki页头分析>>
+<<contribution/wiki/wiki_header#,Wiki页头分析>>
 
 
 == Atom 代码片段

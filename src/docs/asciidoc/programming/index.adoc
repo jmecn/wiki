@@ -1,0 +1,8 @@
+= jME3编程手册
+:author: yan
+:revnumber:
+:revdate: 2018-01-18 10:55:06
+:relfileprefix: ../
+:imagesdir: ..
+:experimental:
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]

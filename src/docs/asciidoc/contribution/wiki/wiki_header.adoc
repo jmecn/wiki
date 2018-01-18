@@ -2,8 +2,8 @@
 :author: mitm (翻译 jmecn)
 :revnumber:
 :revdate: 2018-01-16 13:02:21
-:relfileprefix: ../
-:imagesdir: ..
+:relfileprefix: ../../
+:imagesdir: ../..
 :experimental:
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
