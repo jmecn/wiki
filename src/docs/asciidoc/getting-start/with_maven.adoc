@@ -1,7 +1,207 @@
-= MAVEN
-:author: yanmaoyuan
+= Maven Artifacts
+:author: (翻译 jmecn)
 :revnumber:
 :revdate: 2018/01/15 16:29
+:relfileprefix: ../
+:imagesdir: //
 :experimental:
 :keywords:
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+
+你可以使用任意兼容Maven的工具来开发jME3项目。
+
+== jME3.2
+
+jME3.1 与 jME3.2 的 Artifacts 发布在下列仓库中：
+
+* link:https://jcenter.bintray.com/org/jmonkeyengine/[JCenter]
+* link:https://bintray.com/jmonkeyengine/org.jmonkeyengine[Bintray repo: org.jmonkeyengine] 点击页面上的 `SET ME UP` 按钮可以查看在 Maven 或 Gradle 中配置 `org.jmonkeyengine` 组织下每个 Artifacts 的指令。
+
+NOTE: 少部分Artifacts只有Bintray仓库才有，JCenter仓库中没有。详细请注意看下文的说明。
+
+所有 jME3 类库的组织编号(`group id`) 都是 `org.jmonkeyengine`。
+
+下面是当前版本(version `3.2.0-stable`)可以用的 Artifacts：
+
+*  `jme3-core` - 任何jME3项目都需要的核心类库。
+*  `jme3-effects` - 包含水面、雾效等后处理特效(post process effects)的类库。
+*  `jme3-blender` - Blender文件导入插件，只能和jME3的桌面版渲染器(jme3-desktop)一起使用。
+*  `jme3-plugins` - 用于加载orge、fbx、gltf等3D模型的插件类库。
+*  `jme3-jogg` - 用于加载OGG音频文件的插件类库。
+*  `jme3-niftygui` - 为jME3添加NiftyGUI支持，可用来制作图形用户界面。(JCenter仓库中没有这个类库)
+*  `jme3-terrain` - 基于高度图的地形生成 +++<abbr title="应用编程接口">API</abbr>+++。
+*  `jme3-networking` -  jME3的网络类库(别名SpiderMonkey)。
+*  `jme3-jbullet` - Physics support using jbullet (仅用于开发桌面应用，JCenter仓库中没有这个类库) *jme3-jbullet 或 jme3-bullet 只能选一个，不能同时存在。*
+*  `jme3-bullet` - 基于Bullet Physics 实现的物理引擎，需要 `jme3-bullet-native` 或 `jme3-bullet-native-android` 。 (beta)
+*  `jme3-bullet-native` - `jme3-bullet`(不是jbullet)所需的本地库文件(.dll, .so)，适用于桌面开发。 (beta)
+*  `jme3-bullet-native-android` - `jme3-bullet`(不是jbullet)所需的本地库文件(.dll, .so)，适用于Android开发。 (beta)
+*  `jme3-desktop` - 包含jME3桌面应用开发的部分 +++<abbr title="应用编程接口">API</abbr>+++ ，只兼容jME3的桌面渲染器，主要用于导入图片。
+*  `jme3-jogl` - 基于JOGL的jME3桌面渲染器。(可选替换 lwjgl / lwjgl3)
+*  `jme3-lwjgl` - 基于LWJGL的jME3桌面渲染器。
+*  `jme3-lwjgl3` - jME3.1新增类库。基于LWJGL3的jME桌面渲染器。 (beta)
+*  `jme3-android` - jME3的Android版渲染器。
+*  `jme3-android-native` - Android开发jME3应用所需的本地库文件(.dll, .so)。
+*  `jme3-ios` - jME3的iOS版渲染器。(JCenter仓库中没有这个类库)
+*  `jme3-vr` - jME3.2 新增类库，可支持虚拟现实(VR)开发。(JCenter仓库中没有这个类库)
+
+使用jME3开发桌面应用，你至少需要下面的模块：
+
+*  `jme3-core`
+*  `jme3-desktop`
+*  `jme3-lwjgl` 或 `jme3-lwjgl3`
+
+使用jME3开发Android应用，你至少需要下面的模块：
+
+*  `jme3-core`
+*  `jme3-android`
+*  `jme3-android-native`
+
+=== Gradle
+
+如果你用Gradle进行开发，要使用 `jme3-jbullet`，`jme3-niftygui` 等 JCetner 中所没有的类库，需按照下面的脚本来添加 Bintray 仓库地址：
+
+[source]
+----
+repositories {
+    jcenter()
+    //maven { url "http://dl.bintray.com/jmonkeyengine/org.jmonkeyengine" }
+}
+
+def jme3 = [v:'3.2.0-stable', g:'org.jmonkeyengine']
+dependencies {
+	compile "${jme3.g}:jme3-core:${jme3.v}"
+	runtime "${jme3.g}:jme3-desktop:${jme3.v}"
+	runtime "${jme3.g}:jme3-lwjgl:${jme3.v}"
+}
+----
+
+=== Maven
+
+[source]
+----
+  <properties>
+    <jme3_g>org.jmonkeyengine</jme3_g>
+    <jme3_v>3.2.0-stable</jme3_v>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>jcenter</id>
+      <url>http://jcenter.bintray.com</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>${jme3_g}</groupId>
+      <artifactId>jme3-core</artifactId>
+      <version>${jme3_v}</version>
+    </dependency>
+    <dependency>
+      <groupId>${jme3_g}</groupId>
+      <artifactId>jme3-desktop</artifactId>
+      <version>${jme3_v}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>${jme3_g}</groupId>
+      <artifactId>jme3-lwjgl</artifactId>
+      <version>${jme3_v}</version>
+    </dependency>
+  </dependencies>
+----
+
+== jME3.0
+
+jME3.0 在 Maven 的仓库地址为：
+
+* link:https://bintray.com/jmonkeyengine/com.jme3[Bintray repo: com.jme3] (点击页面上的 `SET ME UP` 按钮可以查看在 Maven 或 Gradle 中配置 `com.jme3` 组织下各个类库的指令。)
+
+jME3.0 类库的组织编号(`group id`) 都是 `com.jme3`。
+
+下面是最新版本(version `3.0.10`)可以用的 Artifacts：
+
+*  `jme3-core` - 任何jME3项目都需要的核心类库。
+*  `jme3-effects` - 包含水面、雾效等后处理特效(post process effects)的类库。
+*  `jme3-networking` - jME3的网络类库(别名SpiderMonkey)。
+*  `jme3-plugins` - 用于加载orge3D模型的插件类库。
+*  `jme3-jogg` - 用于加载OGG音频文件的插件类库。
+*  `jme3-terrain` - 基于高度图的地形生成 +++<abbr title="应用编程接口">API</abbr>+++。
+*  `jme3-blender` - Blender文件导入插件，只能和jME3的桌面版渲染器(jme3-desktop)一起使用。
+*  `jme3-jbullet` - 基于 jbullet 实现的物理引擎。(仅用于开发桌面应用) *jme3-jbullet 或 jme3-bullet 只能选一个，不能同时存在。*
+*  `jme3-bullet` - 基于Bullet Physics 实现的物理引擎，需要 `jme3-bullet-native` 或 `jme3-bullet-native-android` 。
+*  `jme3-bullet-natives` - `jme3-bullet`(不是jbullet)所需的本地库文件(.dll, .so)，适用于桌面开发。(alpha)
+*  `jme3-bullet-natives-android` - `jme3-bullet`(不是jbullet)所需的本地库文件(.dll, .so)，适用于Android开发。(alpha)
+*  `jme3-niftygui` - 为jME3添加NiftyGUI支持，可用来制作图形用户界面。
+*  `jme3-desktop` - 包含jME3桌面应用开发的部分 +++<abbr title="应用编程接口">API</abbr>+++ ，只兼容jME3的桌面渲染器，主要用于导入图片。
+*  `jme3-lwjgl` - 基于LWJGL的jME3桌面渲染器。
+*  `jme3-android` - jME3的Android版渲染器。
+*  `jme3-ios` - jME3的iOS版渲染器。
+
+使用jME3开发桌面应用，你至少需要下面的模块：
+
+*  `jme3-core`
+*  `jme3-desktop`
+*  `jme3-lwjgl`
+
+使用jME3开发Android应用，你至少需要下面的模块：
+
+*  `jme3-core`
+*  `jme3-android`
+
+=== Gradle
+
+如果你使用Gradle，需要先按照下面的脚本来添加仓库地址：
+
+[source]
+----
+repositories {
+    jcenter()
+    maven { url "http://dl.bintray.com/jmonkeyengine/com.jme3" }
+}
+
+def jme3 = [v:'3.0.10', g:'com.jme3']
+dependencies {
+	compile "${jme3.g}:jme3-core:${jme3.v}"
+	runtime "${jme3.g}:jme3-desktop:${jme3.v}"
+	runtime "${jme3.g}:jme3-lwjgl:${jme3.v}"
+}
+----
+
+=== Maven
+
+[source]
+----
+  <properties>
+    <jme3_g>com.jme3</jme3_g>
+    <jme3_v>3.0.10</jme3_v>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>com_jme3-repo</id>
+      <url>http://dl.bintray.com/jmonkeyengine/com.jme3</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>${jme3_g}</groupId>
+      <artifactId>jme3-core</artifactId>
+      <version>${jme3_v}</version>
+    </dependency>
+    <dependency>
+      <groupId>${jme3_g}</groupId>
+      <artifactId>jme3-desktop</artifactId>
+      <version>${jme3_v}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>${jme3_g}</groupId>
+      <artifactId>jme3-lwjgl</artifactId>
+      <version>${jme3_v}</version>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
+----

@@ -68,8 +68,7 @@ TIP: 例如，对于只需要 3D 可视化项目来说，就不需要 `jme3-netw
 
 下面的文章将介绍如何在不同环境中集成JME3：
 
-* <<getting-start/with_gradle#,Gradle>>
-* <<getting-start/with_maven#,Maven>>
+* <<getting-start/with_maven#,Maven或Gradle>>
 * <<getting-start/with_netbeans#,NetBeans>>
 * <<getting-start/with_eclipse#, Eclipse>>
 * <<getting-start/with_android_studio#,Android Studio>>
