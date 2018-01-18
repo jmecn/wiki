@@ -4,6 +4,7 @@
 <div class="ulist"><ul><li><p>怎么用jME3显示3D模型？</p></li><li><p>怎么用jME3显示一张图片？</p></li><li><p>为什么发生AssetNotFoundException异常？</p></li><li><p>我的模型为什么是黑漆漆的？</p></li></ul></div>
 <div class="paragraph"><p>先引用《游戏引擎架构》一书中对“工具及资产管道”的论述：</p></div>
 <div class="listingblock"><div class="content"><pre>游戏本质上是多媒体应用。游戏引擎的输入数据形式广泛，例如三角网格、纹理位图、动画数据、音频文件等。所有源数据皆由美术人员使用数字内容创作（digital content creation, DCC）应用软件制作。
+
 1. DCC应用软件所使用的数据格式，鲜有适合直接用于游戏中的，主因有二。
 
 2. DCC软件在内存中的数据模型，通常比游戏所需的复杂得多。例如，Maya的场景节点，以有向非循环图（directed acyclic graph, DAG）储存，包含复杂的互相连接网络。Maya也储存了该文件的所有编辑历史记录。Maya场景中每个物体的位置、方向、比例，都以完整的三维变换表示，此变换又由平移（translation）、旋转（rotation）、缩放（scale）、切变（shear）所组成。游戏引擎通常只需要这些信息的一小部分就能在游戏中渲染模型。
@@ -24,7 +25,7 @@
 <div class="sect1"><h2 id="导出和保存">导出和保存</h2><div class="sectionbody"><div class="paragraph"><p>这部分将介绍如何把JME3中的数据结构保存到磁盘，生成j3o文件，或者其他自定义文件格式。</p></div>
 <div class="ulist"><ul><li><p>Java序列化机制</p></li><li><p>Savable接口</p></li><li><p>BinaryImportor</p></li><li><p>BinaryExportor</p></li></ul></div></div></div>
 <div class="sect1"><h2 id="最佳实践">最佳实践</h2><div class="sectionbody"><div class="paragraph"><p>介绍在JME3中管理、加载游戏资产的一些最佳实践。</p></div>
-<div class="ulist"><ul><li><p>工厂模式</p></li><li><p>资源管理线程（异步加载）</p></li><li><p>资产打包（zip、jar）</p></li><li><p>纹理图集（TextureAtlas）</p></li></ul></div></div></div></div><div id="footer"><div id="footer-text">Version 1.0<br>Last updated 2018-01-18 04:32:05 +00:00</div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script>docsearch({
+<div class="ulist"><ul><li><p>工厂模式</p></li><li><p>资源管理线程（异步加载）</p></li><li><p>资产打包（zip、jar）</p></li><li><p>纹理图集（TextureAtlas）</p></li></ul></div></div></div></div><div id="footer"><div id="footer-text">Version 1.0<br>Last updated 2018-01-18 10:03:09 +00:00</div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script>docsearch({
   apiKey: 'a736b6d93de805e26ec2f49b55013fbd',
   indexName: 'jmonkeyengine',
   inputSelector: '#doc-search',
