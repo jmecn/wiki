@@ -1,4 +1,4 @@
-= Wiki structure
+= Wiki Structure
 :author: jmecn
 :revnumber:
 :revdate: 2018-01-17 16:30:18
@@ -7,7 +7,24 @@
 :experimental:
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-I'm planning to reorganize wiki contents, like this:
+
+This is a plan to reorganize wiki content. Anyone contribution to the wiki please
+read this first.
+
+NOTE: This structure is still in planning, and it's ONLY the structure of Chinese
+wiki, NOT the official one.
+
+My plan is:
+
+* Remove all the old jME2 contents alway and keep this wiki jME3 only.
+* Define a more user friendly and extendable structure.
+* Translate all the documents, and place each of them to the new place.
+* Fix all the links ONLY in this wiki.
+
+I will do all the above in the (experimental) jmecn/wiki. Maybe someday we can use
+this structure on official wiki if it works fine.
+
+Below is my planning structure:
 
 == Getting-Start
 
@@ -111,9 +128,9 @@ This part tells how to contribute to jME3:
 * Engine
 * SDK
 
-Also it should tell user how to find the already exist contributes on Github.com。
+Also it should tell user how to find the already exist contributes on Github.com.
 
-== Planning
+== Possible example:
 
 Example structures:
 
