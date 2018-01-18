@@ -1,11 +1,11 @@
-= BSD许可证
+= jME3开源许可证
 :author: (翻译 jmecn)
 :revnumber:
 :revdate: 2018/01/17 10:39
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 
-== jME3 BSD 许可证(译文)
+== jME3 BSD 开源许可证
 
 原文: link:https://jmonkeyengine.github.io/wiki/bsd_license.html[jME3 BSD LICENSE]
 

@@ -49,8 +49,8 @@ a| 在下列环境中集成JME3： +
 * <<getting-start/with_android_studio#,Android Studio>> +
 * <<getting-start/with_intellij_idea#,Intellij IDEA>>
 a| * <<install/build_from_sources#,编译JME3源码>> +
-* <<jme3/build_jme3_sources_with_netbeans#,在NetBeans中编译JME3源码>> +
-* <<jme3/simpleapplication_from_the_commandline#,在(Linux)命令行下开发JME3>>
+* <<install/build_jme3_sources_with_netbeans#,在NetBeans中编译JME3源码>> +
+* <<install/simpleapplication_from_the_commandline#,在(Linux)命令行下开发JME3>>
 
 |===
 

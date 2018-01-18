@@ -1,0 +1,229 @@
+= jMonkeyEngine3 维基百科
+:author: jmecn
+:revnumber:
+:revdate: 2018-01-18 15:04:29
+:relfileprefix:
+:imagesdir:
+:experimental:
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+
+<<documentation#,旧版入口>>
+
+本wiki页面包含 jMonkeyEngine3(简称jME3) 的安装指南、开发教程以及其他一些能够帮助你开发游戏项目的资料，请善用本页上方的搜索框来检索wiki中的内容。
+
+TIP: 这是一条警示信息。你将在很多wiki页面中看到类似的图标，查阅 <<contribution/wiki/admonitions#,警示标记定义>> 可以了解这些图标的含义。
+
+== 下载和安装
+
+*在安装之前，请查阅<<bsd_license#,jME3开源许可证>>、<<engine/features#,jME3功能说明>>和<<install/requirements#,开发需求>>，* 然后选择其中一个选项：
+[cols="4", options="header"]
+|===
+
+a|
+<a| 推荐
+<a| 可选
+<a| 可选
+
+a| 目标
+a| 进行jMonkeyEngine可视化开发
+a| 在其他IDE中集成 jMonkeyEngine3
+a| 利用源码来编译自定义引擎
+
+a| 下载地址
+a| link:https://github.com/jMonkeyEngine/sdk/releases/tag/stable[jMonkeyEngine SDK]
+a| link:https://github.com/jMonkeyEngine/jmonkeyengine/releases[jMonkeyEngine]
+a| link:https://github.com/jMonkeyEngine/jmonkeyengine[源代码]
+
+a| 内容
+a| 源代码, 已编译的jar包, javadoc, SDK
+a| 源代码，最新版本的jar包，javadoc
+a| 源代码
+
+|===
+
+=== jMonkeyEngine SDK
+
+jMonkeyEngine SDK(简称 SDK 或 jME SDK) 是 jME3 团队为提高开发者的工作效率，基于
+NetBeans 开发的**可视化集成开发工具**。它为开发者提供了模型预览、场景编辑、地形编辑、材
+质编辑等3D游戏开发所需的常用功能。
+
+jME SDK 创建的是基于Ant的项目，任何Java IDE都可以导入。我们建议其他IDE的用户也下载
+jME SDK，并选择 menu:File[Import Project > External Project Assets] 来创建一个不包
+含任何代码的资源项目，用以管理项目中的资源文件(如模型、材质、贴图等)。这样您就可以在自己选
+择的IDE中编码，并利用jME SDK来将您的模型转换成 .j3o 格式。
+
+* <<sdk/index#,学习使用SDK>>
+* <<sdk/create_project#,使用SDK创建工程>>
+
+=== jMonkeyEngine
+
+jME3 的本体是一个 3D 游戏引擎框架，表现为一组名为 `jme3-{模块名}-{版本号}.jar` 的类库。
+任何Java IDE都可以通过集成 jME3 的类库来获得 3D 支持。
+
+更棒的是，jME3 采用模块化开发方法，将引擎的功能分解到各个 jar 文件中，开发者可以根据自己的
+需要来选择依赖哪些类库。
+
+TIP: 例如，对于只需要 3D 可视化项目来说，就不需要 `jme3-networking.jar` 中的联网功能。
+
+下面的文章将介绍如何在不同环境中集成JME3：
+
+* <<getting-start/with_gradle#,Gradle>>
+* <<getting-start/with_maven#,Maven>>
+* <<getting-start/with_netbeans#,NetBeans>>
+* <<getting-start/with_eclipse#, Eclipse>>
+* <<getting-start/with_android_studio#,Android Studio>>
+* <<getting-start/with_intellij_idea#,Intellij IDEA>>
+
+=== 源代码
+
+jME3 是一款免费开源的3D游戏引擎，使用纯Java开发而成，项目托管于 link:https://github.com/jMonkeyEngine/jmonkeyengine[github.com]。jME3 采用 link:https://gradle.org/[Gradle] 项目结构，编译源代码需要先安装 JDK 和 Gradle。
+
+下面的文章将介绍如何获取和编译 jME3 的源代码。
+
+* <<install/build_from_sources#,编译JME3源码>>
+* <<install/build_jme3_sources_with_netbeans#,在NetBeans中编译JME3源码>>
+* <<install/simpleapplication_from_the_commandline#,在(Linux)命令行下开发JME3>>
+
+== 入门
+
+jMonkeyEngine 为开发者准备了大量 Demo，用于演示引擎的各个功能。下面的文章将说明如何运行这些 Demo 程序。
+
+NOTE: 待补充
+
+对于开发者来说，下面的13篇入门教程能够让你快速了解 jME3 的常用 API。
+
+<<beginner/index#,入门教程>>
+
+== SDK教程
+
+下面是 SDK 的教程，这些文章将为您介绍 SDK 的各个功能，以及如何使用 SDK 来开发 jME3 项目。
+
+主要内容:
+
+* 创建工程
+* 导入并查看3D模型
+* 转换 j3o 模型
+* 地形编辑器
+* 粒子编辑器
+* 后处理特效
+* 调试与测试
+* 发布应用
+* ..
+
+详见：<<sdk/index#,SDK教程>>
+
+== 引擎教程
+
+下面的文章将分不同模块介绍jMonkeyEngine3的各个功能。
+
+主要内容：
+
+* SimpleApplication
+* 资产
+* 场景图
+* 渲染
+* 动画
+* 地形
+* 物理
+* 用户界面
+* 输入
+* 多媒体
+* 性能
+* ..
+
+详见：<<engine/index#,引擎教程>>
+
+== 资产管线
+
+游戏本质上是多媒体应用。下面的文章将介绍如何把美术人员制作的资源文件导入到游戏引擎中使用的问题。
+
+主要内容：
+
+* jME3支持的文件格式
+* 使用Blender制作jME3可使用的模型
+* 使用3DSMAX制作jME3可使用的模型
+* 使用Maya制作jME3可使用的模型
+* 转化j3o模型
+* 资产的导入和导出
+* ..
+
+详见：<<asset-pipeline,index#,jME3资产管线>>
+
+== 编程指南
+
+下面的文章将介绍如何使用 jMonkeyEngine 的 API 来进行程序开发。
+
+主要内容：
+
+* 场景图
+* 摄像机与视口
+* 游戏逻辑
+* 输入处理
+* 碰撞检测
+* 3D数学
+* 多线程
+* 网络通信
+* 脚本
+* 人工智能(AI)
+* 性能优化
+* 调试/测试/日志
+* ..
+
+详见：<<programming/index#,编程指南>>
+
+== 着色器
+
+jMonkeyEngine 支持可编程渲染管线。开发者能够使用 GLSL 来制作各种炫目的特效。下面的文章将
+介绍说明如何在 jME3 中进行着色器开发。
+
+主要内容：
+
+* 着色器
+* 材质定义
+* 参数绑定
+* jME3 的 Glabal, Uniform, Attribute 变量
+* 光照模型
+* 预编译宏
+* glsllib
+* Shader Node编辑器
+* ..
+
+详见：<<shader/index#,着色器>>
+
+== 平台兼容性
+
+基于 Java 本身的跨平台特性，使用 jMonkeyEngine 开发的项目可以发布到诸多平台。包括：
+
+* Windows
+* Linux
+* MacOS
+* Android
+* iOS
+* Steam
+* VR
+* ..
+
+下面的文章将介绍在不同平台下开发、发布 jME3 项目需要注意的问题。
+
+<<platforms/index#,平台兼容性>>
+
+== 版本
+
+jMonkeyEngine 是一个活跃的项目，从2007年发布 jME3.0 开始，它的功能一直在持续改进。不同
+版本之间的功能可能有较大区别，下面的文章将说明 jME3 的版本更新历史，以及各个发布版的主要改
+动。
+
+详见：<<build/index#,版本历史>>
+
+== 贡献手册
+
+jMonkeyEngine 是一个开源项目，欢迎所有人为该项目贡献内容。你可以帮助改进：
+
+* jMonkeyEngine SDK
+* jMonkeyEngine
+* Wiki
+
+如果你想与 jME3 的用户分享自己的项目，或者对他人贡献的项目感兴趣，可以通过下面的地址查看：
+
+link:https://github.com/jMonkeyEngine-Contributions/[jMonkeyEngine-Contributions]

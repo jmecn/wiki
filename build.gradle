@@ -46,6 +46,7 @@ asciidoctor {
 */
 }
 
+/*
 asciidoctor.doLast {
 	copy {
 		from 'build/asciidoc/html5'
@@ -54,3 +55,4 @@ asciidoctor.doLast {
 		include 'documentation.html'
 	}
 }
+*/
