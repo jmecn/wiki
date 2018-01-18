@@ -12,7 +12,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 [source]
 ----
 
-版权所有 (c) 2003-2017 jMonkeyEngine
+版权所有 (c) 2009-2012 jMonkeyEngine
 保留所有权力。
 
 在满足下列条件的前提下，允许再发布经过或未经过修改的、源代码或二进制形式
