@@ -59,7 +59,7 @@ NOTE: 少部分Artifacts只有Bintray仓库才有，JCenter仓库中没有。详
 
 === Gradle
 
-如果你用Gradle进行开发，要使用 `jme3-jbullet`，`jme3-niftygui` 等 JCetner 中所没有的类库，需按照下面的脚本来添加 Bintray 仓库地址：
+NOTE: 如果你用Gradle进行开发，要使用 `jme3-jbullet`，`jme3-niftygui` 等 JCetner 中所没有的类库，需要把下面 `//maven ..` 语句前的注释去掉。
 
 [source]
 ----
@@ -152,7 +152,7 @@ jME3.0 类库的组织编号(`group id`) 都是 `com.jme3`。
 
 === Gradle
 
-如果你使用Gradle，需要先按照下面的脚本来添加仓库地址：
+NOTE: 如果你使用Gradle，需要先按照下面的脚本来添加仓库地址。
 
 [source]
 ----
