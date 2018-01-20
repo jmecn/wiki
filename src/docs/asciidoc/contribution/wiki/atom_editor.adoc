@@ -12,9 +12,8 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 括代码自动补全、语法高亮、即时预览、自动集成 Github 客户端等功能。它唯一没干的事情就是帮你
 写文档了。
 
-== 下载源文件
+== 前置需求
 
-.前置需求：
 .  拥有一个 link:https://github.com/[GitHub 账号]。
 .  成为 link:https://github.com/jMonkeyEngine/wiki/[jMonkeyEngine/wiki] 项目的成员。
 
@@ -26,7 +25,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 .  打开 link:https://github.com/jMonkeyEngine/wiki[https://github.com/jMonkeyEngine/wiki] 页面。
 .  在页面顶部的菜单中，点击 icon:code-fork[]*Fork* 按钮。
 
-== 安装 Atom 编辑器
+== 下载源文件
 
 .  下载和安装 Atom 编辑器 - https://atom.io/
 .  安装完成后，你可以点击 btn:[Theme Picker] 按钮打开 `Choose A Theme` 面板，然后根据个人喜好来定义编辑器的样式。
