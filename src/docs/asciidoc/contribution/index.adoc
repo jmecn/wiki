@@ -1,7 +1,7 @@
 = 贡献
 :author: jmecn
-:revnumber:
-:revdate: 2018-01-20T08:54:56.317Z
+:revnumber: 1.0
+:revdate: 2018-01-20 08:54:56
 :relfileprefix: ../
 :imagesdir: ..
 :experimental:
@@ -14,11 +14,11 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == jMonkeyEngine
 
-* <<contributeion/engine/jme3_source_structure#,jME3源代码结构>>
+* <<contribution/engine/jme3_source_structure#,jME3源代码结构>>
 
 == Wiki
 
 * <<contribution/wiki/structure#,Wiki目录结构>>
 * <<contribution/wiki/admonitions#,警示标志定义>>
-* <<contribution/wiki/atom_editor#,Atom编辑器>>
-* <<contribution/wiki/wiki_header#,Wiki页头说面>>
+* <<contribution/wiki/atom_editor#,使用Atom编辑Wiki>>
+* <<contribution/wiki/wiki_header#,Wiki页头说明>>

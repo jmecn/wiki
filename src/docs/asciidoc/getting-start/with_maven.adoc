@@ -3,13 +3,15 @@
 :revnumber:
 :revdate: 2018/01/15 16:29
 :relfileprefix: ../
-:imagesdir: //
+:imagesdir:
 :experimental:
 :keywords:
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 
-你可以使用任意兼容Maven的工具来开发jME3项目。
+你可以使用任意兼容Maven或Gradle的工具来开发jME3项目。
+
+TIP: 如果你不了解Gradle，建议学习 link:https://www.w3cschool.cn/gradle/[Gradle教程]，并模仿 https://github.com/Simsilica/Examples/tree/master/simple-jme[simple-jme] 项目建立自己的工程。
 
 == jME3.2
 
