@@ -1,7 +1,152 @@
 = jMonkeyEngine3 SDK
-:author: yanmaoyuan
+:author: (翻译 jmecn)
 :revnumber: 1.0
 :revdate: 2018/01/15 16:29
+:relfileprefix: ../
+:imagesdir: ..
 :experimental:
-:keywords:
+:keywords: documentation, tool, sdk
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+
+== 为什么选择jMonkeyEngine SDK?
+
+
+image::sdk/jme3-jmonkeyplatform.png[jme3-jmonkeyplatform.png,width="288",height="180",align="left"]
+
+jMonkeyEngine SDK (software development kit) 是官方推荐的jME3游戏开发环境。
+
+jMonkeyEngine SDK 是一个集成开发环境，为你提供了创作jMonkeyEngine游戏内容所需的独特插件。你可以link:https://github.com/jMonkeyEngine/sdk/releases/tag/stable[下载和安装 jMonkeyEngine SDK]，并直接用它来完成游戏开发，不需要像其他通用IDE(<<beginner/what_s_an_ide#,什么是IDE>>?)一样进行任何配置。
+
+由于 jMonkeyEngine SDK 是基于link:http://platform.netbeans.org/[NetBeans 平台] (<<sdk/whynoteclipse#,为什么不选择Eclipse?>>)，你可以使用所有link:http://www.netbeans.org/[NetBeans IDE]的开发工具，包括从Applet、WebStart到桌面等各种应用发布格式。虽然我们推荐用户使用 jMonkeyEngine SDK，但对于有经验的开发者来说，依然可以使用自己最喜欢的IDE来开发，只需添加jMonkeyEngine的jar文件即可，仅使用jMonkeyEngine SDK来管理游戏资产。
+
+[TIP]
+====
+通过菜单 `menu:Settings[Keymap]` 可以设置你偏好的快捷键设置：NetBeans(默认)、Eclipse、IntelliJ 或其它。
+====
+
+
+
+=== 文档
+
+
+[TIP]
+====
+在SDK中，想要获得帮助信息，或者查看样例代码，可以按快捷键 `kbd:[F1] ` 打开帮助面板，或者按快捷键 `kbd:[Ctrl] ` + `kbd:[i] ` 进入超级搜索框（右上）。
+====
+
+SDK内置的帮助系统可以让你直接浏览jME3的wiki(副本)。它同样包括了样例代码、插件安装指南以及一般的IDE功能。
+
+== 全部功能与用例
+
+
+=== 视频教程
+
+*SDK用例教程*
+
+*  link:http://www.youtube.com/watch?v=-OzRZscLlHY[Video: jMonkeyEngine SDK Use Case Demo 1 (Quixote demo)]
+*  link:http://www.youtube.com/watch?v=6-YWxD3JByE[Video: jMonkeyEngine SDK Use Case Demo 2 (Models and Materials)]
+
+*SDK教程*
+
+*  link:http://www.youtube.com/watch?v=M1_0pbeyJzI[Video: jMonkeyEngine SDK - Basics]
+*  link:http://www.youtube.com/watch?v=nL7woH40i5c[Video: jMonkeyEngine SDK - Importing Models]
+*  link:http://www.youtube.com/watch?v=DUmgAjiNzhY[Video: jMonkeyEngine SDK - Dragging&amp;Dropping Nodes]
+*  link:http://www.youtube.com/watch?v=ntPAmtsQ6eM[Video: jMonkeyEngine SDK - Scene Composing]
+*  link:http://www.youtube.com/watch?v=zgPV3W6dD4s[Video: jMonkeyEngine SDK - Terrain with Collision Shape]
+*  link:http://www.youtube.com/watch?v=Feu3-mrpolc[Video: jMonkeyEngine SDK - Working with Materials]
+*  link:http://www.youtube.com/watch?v=MNDiZ9YHIpM[Video: jMonkeyEngine SDK - Custom Controls]
+*  link:http://www.youtube.com/watch?v=oZnssg8TBWQ[Video: WebStart Deployment]
+*  link:http://www.youtube.com/watch?v=D7JM4VMKqPc[Video: Animation and Effect TrackEditing]
+
+
+[.right.text-left]
+image:sdk/jmonkeyplatform-docu-4.png[jmonkeyplatform-docu-4.png,width="421",height="298",align="right"] +
+image:jme3-built-in-help.png[jme3-built-in-help.png,width="400",height="260",align="right"]
+
+=== SDK用户手册
+
+*Getting Started*
+
+*  <<sdk/update_center#,升级SDK>>
+*  <<sdk/troubleshooting#,排除故障>>
+
+*通用Java开发功能*
+
+*  <<sdk/project_creation#,创建工程>>
+*  <<sdk/code_editor#,代码编辑器与工具箱>>
+*  <<sdk/version_control#,版本控制>>
+*  <<sdk/application_deployment#,发布应用程序(JAR, WebStart, Applet, Android)>>
+**  <<sdk/default_build_script#,默认构建脚本>>
+**  <<jme3/android#,Android>>
+**  <<jme3/ios#,iOS>>
+
+*  <<sdk/debugging_profiling_testing#,调试、分析、测试>>
+
+*独有游戏开发功能*
+
+*  <<sdk/model_loader_and_viewer#,导入、查看、转换3D模型>>
+**  <<sdk/asset_packs#,资产打包>>
+
+*  <<sdk/scene_explorer#,场景浏览器>>
+*  <<sdk/scene_composer#,组成3D场景>>
+*  <<sdk/terrain_editor#,地形编辑器>>
+*  <<sdk/sample_code#,样例代码>>
+*  <<sdk/material_editing#,材质编辑器>>
+*  <<sdk/font_creation#,创建BitmapFont字体>>
+*  link:https://hub.jmonkeyengine.org/t/effecttrack-and-audiotrack-editing-in-the-sdk/23378[Audio and Effect Track Editing]  
+**  link:https://www.youtube.com/watch?v=D7JM4VMKqPc[Video: Effect and AudioTrack editing in jMonkeyEngine 3 sdk]
+//*  <<sdk/attachment_bones#,Animation and Attachment Bones Editing>>
+*  <<sdk/filters#,编辑与查看后处理滤镜特效>>
+*  <<sdk/blender#,导入Blender模型>>
+*  <<jme3/advanced/application_states#,Application States>>
+*  <<jme3/advanced/custom_controls#,自定义Controls>>
+*  <<sdk/vehicle_creator#,创建交通工具>>
+
+
+[NOTE]
+====
+jMonkeyEngine SDK is continuously being improved. Check out this link for a list of changes and improvements for the future: link:https://github.com/jMonkeyEngine/jmonkeyengine/issues/198[changes and improvements for the future]
+====
+
+
+
+image::jme3/jmonkey-sdk-workflow.png[jmonkey-sdk-workflow.png,width="",height="",align="center"]
+
+
+
+== 高级用法
+
+*  <<sdk/use_own_jme#,Using your own (modified) version of jME3 in jMonkeyEngine SDK>>
+*  <<sdk/development/model_loader#,开发自定义模型导入插件>>
+*  <<sdk/log_files#,日志文件>>
+*  <<sdk/increasing_heap_memory#,增加堆内存>>
+
+
+== 可用的外部插件
+
+*  <<jme3/contributions#,Contributions>>
+*  <<sdk/neotexture#,Neo Texture Editor for procedural textures>>
+*  link:http://www.youtube.com/watch?v=yS9a9o4WzL8[Video: Mesh Tool &amp; Physics Editor]
+*  And more…
+
+
+=== 开发
+
+*  <<sdk/build_platform#,编译jMonkeyEngine SDK>>
+*  <<sdk/development#,SDK插件开发>>
+
+
+=== 状态与路线图
+
+See link:https://github.com/jMonkeyEngine/jmonkeyengine/labels/roadmap[this page on GitHub] for links to up-to-date info on current status and features.
+
+
+== 一些历史
+////
+Removed links due to not being able to find them...
+
+The jMonkeyEngine SDK first set root during a link:http://www.jmonkeyengine.com/forum/index.php?topic=13070.0[discussion with Normen Hansen]. Although similar projects existed previously, this was the first serious attempt that had the original core team's blessing. For some time, the project was referred to merely as the "link:https://blogs.oracle.com/geertjan/youtube-movie-of-jmonkeyengine-on-netbeans-platform[Game Development Environment], or "GDE" for short. During alpha, we referred to it as link:http://www.jmonkeyengine.com/forum/index.php?topic=13510.0[jMonkeyPlatform], and for beta it was eventually renamed to the jMonkeyEngine SDK.
+////
+
+The jMonkeyEngine SDK first set root during a discussion with Normen Hansen. Although similar projects existed previously, this was the first serious attempt that had the original core team's blessing. For some time, the project was referred to merely as the Game Development Environment, or "GDE" for short. During alpha, we referred to it as jMonkeyPlatform, and for beta it was eventually renamed to the jMonkeyEngine SDK.

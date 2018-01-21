@@ -16,7 +16,7 @@ TIP: 这是一条警示信息。你将在很多wiki页面中看到类似的图�
 
 == 下载和安装
 
-*在安装之前，请查阅<<bsd_license#,jME3开源许可证>>、<<engine/features#,jME3功能说明>>和<<install/requirements#,开发需求>>，* 然后选择其中一个选项：
+*在安装之前，请查阅<<bsd_license#,jME3开源许可证>>、<<engine/features#,jME3功能说明>>和<<engine/requirements#,开发需求>>，* 然后选择其中一个选项：
 [cols="4", options="header"]
 |===
 
@@ -36,9 +36,14 @@ a| link:https://github.com/jMonkeyEngine/jmonkeyengine/releases[jMonkeyEngine]
 a| link:https://github.com/jMonkeyEngine/jmonkeyengine[源代码]
 
 a| 内容
-a| 源代码, 已编译的jar包, javadoc, SDK
-a| 源代码，最新版本的jar包，javadoc
-a| 源代码
+a| * 源代码 +
+* 已编译的jar包 +
+* javadoc +
+* SDK
+a| * 源代码 +
+* 最新版本的jar包 +
+* javadoc
+a| * 源代码
 
 |===
 
@@ -59,10 +64,8 @@ jME SDK，并选择 menu:File[Import Project > External Project Assets] 来创�
 === jMonkeyEngine
 
 jME3 的本体是一个 3D 游戏引擎框架，表现为一组名为 `jme3-{模块名}-{版本号}.jar` 的类库。
-任何Java IDE都可以通过集成 jME3 的类库来获得 3D 支持。
-
-更棒的是，jME3 采用模块化开发方法，将引擎的功能分解到各个 jar 文件中，开发者可以根据自己的
-需要来选择依赖哪些类库。
+任何Java IDE都可以通过集成 jME3 的类库来获得 3D 支持。更棒的是，jME3 采用模块化开发方
+法，将引擎的功能分解到各个 jar 文件中，开发者可以根据自己的需要来选择依赖哪些类库。
 
 TIP: 例如，对于只需要 3D 可视化项目来说，就不需要 `jme3-networking.jar` 中的联网功能。
 
