@@ -1,5 +1,5 @@
-= 初级教程
-:author: yanmaoyuan
+= 入门教程
+:author: (翻译 jmecn)
 :revnumber: 1.0
 :revdate: 2018/01/15 16:29
 :relfileprefix: ../
@@ -18,22 +18,22 @@ link:https://github.com/jMonkeyEngine/jmonkeyengine/tree/master/jme3-examples/sr
 
 [IMPORTANT]
 ====
- * 使用<<sdk#,jMonkeyEngine SDK>>开发项目时，按F1键可以搜索并浏览本wiki的一份副本，帮助文档的内容与你所使用的SDK版本同步。本wiki随link:https://github.com/jMonkeyEngine/jmonkeyengine[jME3最新版本]同步更新。* 
+ * 使用<<sdk#,jMonkeyEngine SDK>>开发项目时，按F1键可以搜索并浏览本wiki的一份副本，帮助文档的内容与你所使用的SDK版本同步。本wiki随link:https://github.com/jMonkeyEngine/jmonkeyengine[jME3最新版本]同步更新。*
 ====
 
 image::beginner/beginner-physics.png[beginner-physics.png,with="360",height="291",align="right"]
 
-.  <<beginner/hello_simpleapplication#,第一个JME3程序>> – 实现一个简单的程序
-.  <<beginner/hello_node#,节点(Node)>> – 在场景图中改变几何体和节点属性
-.  <<beginner/hello_asset#,资源(Assets)>> – 加载三维模型、场景和其他的资源
-.  <<beginner/hello_loop#,事件循环(Loop)>> – 在事件循环中实现事件控制功能
-.  <<beginner/hello_input#,输入(Input)>> – 对于键盘和鼠标的输入作出响应
-.  <<beginner/hello_material#,材质(Material)>> – 设置材质、纹理、透明度
-.  <<beginner/hello_animation#,动画(Animation)>> – 控制动画模型
-.  <<beginner/hello_picking#,拣选(Picking)>> – 射击、压下按钮、选择、捡起选项
-.  <<beginner/hello_collision#,碰撞(Collision)>> – 建造墙壁和固体地板
-.  <<beginner/hello_terrain#,地形(Terrain)>> – 使用贴图创建小山的风景
-.  <<beginner/hello_audio#,音效(Audio)>> – 按照位置和事件来实现三维音效
-.  <<beginner/hello_effects#,特效(Effects)>> – 创建粒子特效，比如：火焰、爆炸、魔法
-.  <<beginner/hello_physics#,物理(Physics)>> – 撞球和坠落的砖头
-.  <<beginner/hello_vector#,向量(Vector)>> – 可视化向量与向量操作
+.  <<beginner/hello_simpleapplication#,SimpleApplication>> – 实现一个简单的程序
+.  <<beginner/hello_node#,节点>> – 在场景图中改变几何体和节点属性
+.  <<beginner/hello_asset#,加载资产>> – 加载三维模型、场景和其他的资源
+.  <<beginner/hello_main_event_loop#,主循环>> – 在事件循环中实现事件控制功能
+.  <<beginner/hello_input_system#,输入处理>> – 对于键盘和鼠标的输入作出响应
+.  <<beginner/hello_material#,材质>> – 设置材质、纹理、透明度
+.  <<beginner/hello_animation#,骨骼动画>> – 控制动画模型
+.  <<beginner/hello_picking#,鼠标拣选>> – 射击、压下按钮、选择、捡起选项
+.  <<beginner/hello_collision#,碰撞检测>> – 建造墙壁和固体地板
+.  <<beginner/hello_terrain#,地形>> – 使用贴图创建小山的风景
+.  <<beginner/hello_audio#,三维音效>> – 按照位置和事件来实现三维音效
+.  <<beginner/hello_effects#,画面特效>> – 创建粒子特效，比如：火焰、爆炸、魔法
+.  <<beginner/hello_physics#,物理引擎>> – 撞球和坠落的砖头
+.  <<beginner/hello_vector#,向量>> – 可视化向量与向量操作
