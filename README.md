@@ -41,10 +41,10 @@
 
 * 最好在[jMonkeyEngine 论坛][11]的`Documentation`话题下发帖，告知其他人你提交了一个PR。
 * 在创建wiki页面时，请确保页头属性的完整性。详见：[Wiki页头分析][12]
-* 在连接到其它wiki页面时，总是使用 "内部文档交叉引用"。格式`<<path/to/wiki/page#,自定义标签>>`。
+* 在连接到其它wiki页面时，总是使用 "内部文档交叉引用"。
 * 在插入图片时，先把图片保存到 wiki 的 image 目录下，然后通过 `image` 前缀链接到该文件，并在文件路径后使用 `[]` 注明图片参数。
 
-**“内部文档交叉引用”说明：**
+**“内部文档交叉引用”说明**
 
 格式：`<<path/to/wiki/page#,自定义标签>>`
 
@@ -56,7 +56,7 @@
 
 更多关于“内部文档交叉引用”的信息，请参考：[http://asciidoctor.org/docs/user-manual/#inter-document-cross-references][13]
 
-**插入图片说明：**
+**插入图片说明**
 
 格式： `image::path/to/image.jpg[image alt text,width=" ",height=" ", align=" "]`
 
@@ -70,7 +70,7 @@
 *  图片高度为250像素。
 *  图片居中对齐。
 
-** 如果你想在段落行内插入图片，应该使用 `image:` 前缀。(注意只有一个冒号) **
+如果你想在段落行内插入图片，应该使用 `image:` 前缀。(注意只有一个冒号)
 
 更多关于插入图片的详细说明，请参考：[http://asciidoctor.org/docs/user-manual/#images][14]
 
