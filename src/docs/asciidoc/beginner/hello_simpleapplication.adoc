@@ -12,38 +12,34 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 上一篇: <<getting-start/index#,下载和安装>>,
 下一篇: <<beginner/hello_node#,节点>>
 
-*Prerequisites:* This tutorial assumes that you have <<sdk/index#,安装jMonkeyEngine SDK>>.
+*先决条件:* 这个教程假设你已经 <<sdk/index#,安装jMonkeyEngine SDK>>.
 
-In this tutorial series, we assume that you use the jMonkeyEngine <<sdk#,SDK>>. As an intermediate or advanced Java developer, you will quickly see that, in general, you can develop jMonkeyEngine code in any integrated development environment (NetBeans IDE, Eclipse, IntelliJ) or even from the <<jme3/simpleapplication_from_the_commandline#,command line>>.
+在这个教程系列，我们假设你使用jMonkeyEngine <<sdk#,SDK>>。作为中高级Java开发者，你会很快发现你可以在任何ide(NetBeans IDE, Eclipse, IntelliJ) 甚至 <<jme3/simpleapplication_from_the_commandline#,命令行模式>>中开发jMonkeyEngine代码。
 
-OK, let's get ready to create our first jMonkeyEngine3 application.
+那么开始我们的第一个jMonkeyEngine3应用程序。
 
+== 创建一个工程项目
 
-== Create a project
+在jMonkeyEngine SKL:
 
-In the jMonkeyEngine SDK:
+. 在主菜单选择 `menu:File[New Project]`。 
+. 选择样例 `menu:JME3[Basic Game]`。
+. 点击 btn:[Next]。
+.. 输入项目名，比如 "`HelloWorldTutorial`"。
+.. 输入新项目的路径，比如 `jMonkeyProjects`。
+. 点击 btn:[Finish]
 
-.  Choose `menu:File[New Project]` from the main menu.
-.  In the New Project wizard, select the template `menu:JME3[Basic Game]`.
-.  Click btn:[Next].
-..  Specify a project name, e.g. "`HelloWorldTutorial`".
-..  Specify a path where to store your new project, e.g. a `jMonkeyProjects` directory in your home directory.
-.  Click btn:[Finish].
-
-This will create a basic jme3 application for an easy start with jme3. You can click the run button to run it: You will see a blue cube.
-If you have questions, read more about <<sdk/project_creation#,创建jME3工程>> here.
-
+这会创建一个基本jme3应用。点击运行：你会看到一个蓝色立方体。详情了解 <<sdk/project_creation#,创建jME3工程>> 
 
 [TIP]
 ====
-We recommend to go through the steps yourself, as described in the tutorials. Alternatively, you can create a project based on the <<sdk/sample_code#,JmeTests>> template in the jMonkeyEngine SDK. It will create a project that already contains the `jme3test.helloworld` samples (and many others). For example, you can use the JmeTests project to verify whether you got the solution right.
+我们建议你自己跟着跟着教程。或者，你可以在jMonkeyEngine SDK创建一个 <<sdk/sample_code#,JmeTests>> 项目模板。它会创建一个带有 `jme3test.helloworld` （和更多）的样例。比如，你可以使用JmeTests来检查你的代码。
 ====
 
 
+== 继承Extend SimpleApplication
 
-== Extend SimpleApplication
-
-For this tutorial, you need a jme3test.helloworld package in your project, with the file HelloJME3.java in it.
+在这个教程，你的工程项目需要包含jme3test.helloworld包和HelloJME.java文件。
 
 In the jMonkeyEngine SDK:
 
