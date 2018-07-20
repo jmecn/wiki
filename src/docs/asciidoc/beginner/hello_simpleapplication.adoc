@@ -20,7 +20,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == 创建一个工程项目
 
-在jMonkeyEngine SKL:
+在jMonkeyEngine SDK:
 
 . 在主菜单选择 `menu:File[New Project]`。 
 . 选择样例 `menu:JME3[Basic Game]`。
@@ -37,28 +37,28 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 ====
 
 
-== 继承Extend SimpleApplication
+== 继承(Extend) SimpleApplication
 
 在这个教程，你的工程项目需要包含jme3test.helloworld包和HelloJME.java文件。
 
-In the jMonkeyEngine SDK:
+在jMonkeyEngine SDK:
 
-.  In the `Source Packages` node of your project, btn:[RMB] select the "`mygame`" package.
-..  Choose: `menu:Refactor[Rename]`
-..  Enter the New Name: `jme3test.helloworld`
-..  Click btn:[Refactor] when ready.
-.  In the newly refactored package, btn:[RMB] select the `Main.java` class.
-..   Choose: `menu:Refactor[Rename]`
-..  Enter the New Name: `HelloJME3`
-..  Click btn:[Refactor] when ready.
+. 在 `Source Packages` ， btn:[鼠标右键点击] "`mygame`" 包。
+.. 选择： `menu:Refactor[Rename]`
+.. 输入新名称： `jme3test.helloworld` 
+.. 完成后点击 btn:[Refactor]。
+. 在重构后的包， btn:[鼠标右键点击] `Main.java` 类。
+.. 选择：`menu:Refactor[Rename]`
+.. 输入新名称： `HelloJME3`
+.. 完成后点击 btn:[Refactor]。
 
-You follow this same basic procedure for the remaining tutorials.
+对余下的教程同样使用这个基本流程
 
-TIP: The remaining tutorials all use the same `jme3test.helloworld` package. Just refactor the "`Main.java`" class name to the tutorial examples class name rather than creating a new project for each.
+TIP：余下的教程都使用一样的 `jme3test.helloworld` 包。只需重构 `Main.java` 类名到教程样例的类名，而不是对每个教程都创建新项目。
 
-== Code Sample
+== 代码样例
 
-Replace the contents of the HelloJME3.java file with the following code.
+用以下代码，替换HelloJME3.java原来的代码。
 
 [source,java]
 ----
@@ -94,24 +94,24 @@ public class HelloJME3 extends SimpleApplication {
 }
 ----
 
-btn:[RMB] select the `HelloJME3` class and choose `Run`. If a jME3 settings dialog pops up, confirm the default settings.
+btn:[鼠标右键点击] `HelloJME3` 类，然后选择 `Run`。 如果jME3的设置对话框弹出，确认默认设置。
 
-.  You should see a simple window displaying a 3D cube.
-.  Press the kbd:[W] kbd:[A] kbd:[S] kbd:[D] keys and move the mouse to navigate around.
-.  Look at the FPS text and object count information in the bottom left. You will use this information during development, and you will remove it for the release. (To read the numbers correctly, consider that the 14 lines of text counts as 14 objects with 914 vertices.)
-.  Press kbd:[Esc]  to close the application.
+. 你应该看到一个窗口显示一个3d立方体。
+. 按下 kbd:[W] kbd:[A] kbd:[S] kbd:[D] 键和移动鼠标来航行。
+. 在坐下角可以查看FPS（刷新率）和object count（物体数量）信息。 你将会在开发过程中运用到这些信息，你也会在发行版本中移除它。（确认第14行显示有14个物体和914个顶点。）
+. 按下 kbd:[Esc] 关闭程序。
 
-Congratulations! Now let's find out how it works!
+恭喜你~然后一起来看看它是如何运作的！
 
+== 理解代码
 
-== Understanding the Code
+以上代码初始化了场景和启动程序。
 
-The code above has initialized the scene, and started the application.
-
-
-=== Start the SimpleApplication
+=== 启动SimpleApplication
 
 Look at the first line. Your HelloJME3.java class extends `com.jme3.app.SimpleApplication`.
+
+看第1行，你的 HelloJME3.java 类继承了`com.jme3.app.SimpleApplication`。
 
 [source,java]
 ----
@@ -122,67 +122,64 @@ public class HelloJME3 extends SimpleApplication {
 
 ----
 
-Every JME3 game is an instance of the `com.jme3.app.SimpleApplication` class. The SimpleApplication class is the simplest example of an application: It manages a 3D scene graph, checks for user input, updates the game state, and automatically draws the scene to the screen. These are the core features of a game engine. You extend this simple application and customize it to create your game.
+每个JME3游戏是一个 `com.jme3.app.SimpleApplication` 类的实例。SimpleApplication是一个最简单的应用：它管理3d场景，检测用户输入，更新游戏状况和自动渲染窗口。这些是游戏引擎的核心作用。你通过继承这个类，然后修改定制你自己的游戏。
 
-You start every JME3 game from the main() method, as every standard Java application:
+你通过main()函数来启动所有JME3游戏，就像所有标准Java程序一样。
 
-.  Instantiate your `SimpleApplication`-based class
-.  Call the application's `start()` method to start the game engine.
+. 实例化你基于 `SimpleApplication`的类
+. 调用程序的 `start()` 函数来启动游戏引擎。
 
 [source,java]
 ----
 
     public static void main(String[] args){
-        HelloJME3 app = new HelloJME3(); // instantiate the game
-        app.start();                     // start the game!
+        HelloJME3 app = new HelloJME3(); // instantiate the game 实例化游戏
+        app.start();                     // start the game! 启动游戏
     }
 
 ----
 
-The `app.start();` line opens the application window. Let's learn how you put something into this window (the scene) next.
+`app.start();` 行打开应用窗口。让我们一起学习如何向窗口（场景）加入一些东西。
 
-
-=== Understanding the Terminology
+=== 理解术语
 [cols="2", options="header"]
 |===
 
-a|What you want to do
-a|How you say that in JME3 terminology
+a|你想要做什么
+a|你如何用JME3术语来描述它
 
-a|You want to create a cube.
-a|I create a Geometry with a 1x1x1 Box shape.
+a|你想创建一个立方体
+a|我创建一个 1x1x1 Box shape（盒状）的Geometry（几何形状）
 
-a|You want to use a blue color.
-a|I create a Material with a blue Color property.
+a|你想用蓝颜色
+a|我创建一个蓝颜色的材质
 
-a|You want to colorize the cube blue.
-a|I set the Material of the Box Geometry.
+a|你想给立方体上蓝色
+a|我设置几何形状的材质
 
-a|You want to add the cube to the scene.
-a|I attach the Box Geometry to the rootNode.
+a|你想把立方体放进场景
+a|我attach（附着）几何形状到rootNode（根节点）
 
-a|You want the cube to appear in the center.
-a|I create the Box at the origin = at `Vector3f.ZERO`.
+a|你想立方体放在窗口中央
+a|我在 `Vector3f.ZERO` 创建几何形状
 
 |===
+如果你对这些单词不熟悉，查看 <<jme3/the_scene_graph#,the Scene Graph>> 
 
-If you are unfamiliar with the vocabulary, read more about <<jme3/the_scene_graph#,the Scene Graph>> here.
+=== 初始化场景
 
-
-=== Initialize the Scene
-
-Look at rest of the code sample. The `simpleInitApp()` method is automatically called once at the beginning when the application starts. Every JME3 game must have this method. In the `simpleInitApp()` method, you load game objects before the game starts.
+查看剩下的代码。`simpleInitApp()`函数是在程序开始自动调用一次。所有JME3游戏一定含有这个函数。在函数 `simpleInitApp()` 中，你在游戏开始前加载游戏对象。
 
 [source,java]
 ----
 
     public void simpleInitApp() {
-       // your initialization code...
+       // your initialization code... 你的初始化代码。。。
     }
 
 ----
 
-The initialization code of a blue cube looks as follows:
+立方体的初始化代码如下：
 
 [source,java]
 ----
@@ -199,27 +196,26 @@ The initialization code of a blue cube looks as follows:
 
 ----
 
-A typical JME3 game has the following initialization process:
+一个JME3游戏有以下初始化过程：
 
-.  You initialize game objects:
-**  You create or load objects and position them.
-**  You make objects appear in the scene by attaching them to the `rootNode`.
-**  *Examples:* Load player, terrain, sky, enemies, obstacles, …, and place them in their start positions.
+. 初始化游戏对象：
+** 你创建或加载对象和放置它们。
+** 你通过附着对象到 `rootNode` 来让他们在场景中显示。
+** *Examples* 加载玩家，地形，天空，敌对目标，障碍物，...，和放置它们到它们的起始位置。
 
-.  You initialize variables:
-**  You create variables to track the game state.
-**  You set variables to their start values.
-**  *Examples:* Set the `score` to 0, set `health` to 100%, …
+. 初始化变量：
+** 你创建变量来跟踪游戏状况。
+** 你设置变量的初始值。
+** *Examples:* 设置 `score` 到0，设置 `health` 到100%， ...
 
-.  You initialize keys and mouse actions:
-**  The following input bindings are pre-configured:
-***  kbd:[W] kbd:[A] kbd:[S] kbd:[D] keys – Move around in the scene
-***  Mouse movement and arrow keys – Turn the camera
-***  kbd:[Esc]  key – Quit the game
+. 初始化按键和鼠标的监听：
+** 以下输入已经提前设置：
+*** kbd:[W] kbd:[A] kbd:[S] kbd:[D] 按键 - 移动
+*** 鼠标移动和方向键 - 转动摄像机
+*** kbd:[Esc]  按键 - 退出游戏
 
-**  Define your own additional keys and mouse click actions.
-**  *Examples:* Click to shoot, press kbd:[Space] to jump, …
-
+** 定义你自己的附加按键和鼠标监听。
+** *比如：*点击鼠标来发射子弹，按下 kbd:[Space] 来跳跃， ...
 
 
 === The Future of SimpleApplication
