@@ -54,7 +54,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 对余下的教程同样使用这个基本流程
 
-TIP：余下的教程都使用一样的 `jme3test.helloworld` 包。只需重构 `Main.java` 类名到教程样例的类名，而不是对每个教程都创建新项目。
+小窍门：余下的教程都使用一样的 `jme3test.helloworld` 包。只需重构 `Main.java` 类名到教程样例的类名，而不是对每个教程都创建新项目。
 
 == 代码样例
 
@@ -101,7 +101,7 @@ btn:[鼠标右键点击] `HelloJME3` 类，然后选择 `Run`。 如果jME3的�
 . 在坐下角可以查看FPS（刷新率）和object count（物体数量）信息。 你将会在开发过程中运用到这些信息，你也会在发行版本中移除它。（确认第14行显示有14个物体和914个顶点。）
 . 按下 kbd:[Esc] 关闭程序。
 
-恭喜你~然后一起来看看它是如何运作的！
+一起来看看它是如何运作的！
 
 == 理解代码
 
@@ -109,15 +109,13 @@ btn:[鼠标右键点击] `HelloJME3` 类，然后选择 `Run`。 如果jME3的�
 
 === 启动SimpleApplication
 
-Look at the first line. Your HelloJME3.java class extends `com.jme3.app.SimpleApplication`.
-
-看第1行，你的 HelloJME3.java 类继承了`com.jme3.app.SimpleApplication`。
+看到第1行，你的 HelloJME3.java 类继承了`com.jme3.app.SimpleApplication`。
 
 [source,java]
 ----
 
 public class HelloJME3 extends SimpleApplication {
-  // your code...
+  // your code... 你的代码
 }
 
 ----
@@ -154,7 +152,7 @@ a|我创建一个 1x1x1 Box shape（盒状）的Geometry（几何形状）
 a|你想用蓝颜色
 a|我创建一个蓝颜色的材质
 
-a|你想给立方体上蓝色
+a|你想给立方体涂上蓝色
 a|我设置几何形状的材质
 
 a|你想把立方体放进场景
@@ -168,7 +166,7 @@ a|我在 `Vector3f.ZERO` 创建几何形状
 
 === 初始化场景
 
-查看剩下的代码。`simpleInitApp()`函数是在程序开始自动调用一次。所有JME3游戏一定含有这个函数。在函数 `simpleInitApp()` 中，你在游戏开始前加载游戏对象。
+查看剩下的代码。 `simpleInitApp()` 函数是在程序开始自动调用一次。所有JME3游戏一定含有这个函数。在函数 `simpleInitApp()` 中，你在游戏开始前加载游戏对象。
 
 [source,java]
 ----
@@ -201,12 +199,12 @@ a|我在 `Vector3f.ZERO` 创建几何形状
 . 初始化游戏对象：
 ** 你创建或加载对象和放置它们。
 ** 你通过附着对象到 `rootNode` 来让他们在场景中显示。
-** *Examples* 加载玩家，地形，天空，敌对目标，障碍物，...，和放置它们到它们的起始位置。
+** *例子* 加载玩家，地形，天空，敌对目标，障碍物，...，和放置它们到它们的起始位置。
 
 . 初始化变量：
 ** 你创建变量来跟踪游戏状况。
 ** 你设置变量的初始值。
-** *Examples:* 设置 `score` 到0，设置 `health` 到100%， ...
+** *例子:* 设置 `score` 到0，设置 `health` 到100%， ...
 
 . 初始化按键和鼠标的监听：
 ** 以下输入已经提前设置：
@@ -215,7 +213,7 @@ a|我在 `Vector3f.ZERO` 创建几何形状
 *** kbd:[Esc]  按键 - 退出游戏
 
 ** 定义你自己的附加按键和鼠标监听。
-** *比如：*点击鼠标来发射子弹，按下 kbd:[Space] 来跳跃， ...
+** *例子：*点击鼠标来发射子弹，按下 kbd:[Space] 来跳跃， ...
 
 
 === 未来的SimpleApplication
