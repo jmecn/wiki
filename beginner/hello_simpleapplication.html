@@ -23,25 +23,28 @@
 <span class="keyword">import</span> <span class="include">com.jme3.scene.shape.Box</span>;
 <span class="keyword">import</span> <span class="include">com.jme3.math.ColorRGBA</span>;
 
-<span class="comment">/** Sample 1 - how to get started with the most simple JME 3 application.
- * Display a blue 3D cube and view from all sides by
- * moving the mouse and pressing the WASD keys. */</span>
+<span class="comment">/**
+ * 例1 - 创建一个最简单的 jME3 应用程序.
+ * 在画面中显示一个蓝色的3D方块，通过滑动鼠标、按WASD健来控制摄像机。
+ */</span>
 <span class="directive">public</span> <span class="type">class</span> <span class="class">HelloJME3</span> <span class="directive">extends</span> SimpleApplication {
 
     <span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> main(<span class="predefined-type">String</span><span class="type">[]</span> args){
         HelloJME3 app = <span class="keyword">new</span> HelloJME3();
-        app.start(); <span class="comment">// start the game</span>
+        app.start(); <span class="comment">// 启动游戏</span>
     }
 
     <span class="annotation">@Override</span>
     <span class="directive">public</span> <span class="type">void</span> simpleInitApp() {
-        <span class="predefined-type">Box</span> b = <span class="keyword">new</span> <span class="predefined-type">Box</span>(<span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>); <span class="comment">// create cube shape</span>
-        Geometry geom = <span class="keyword">new</span> Geometry(<span class="string"><span class="delimiter">&quot;</span><span class="content">Box</span><span class="delimiter">&quot;</span></span>, b);  <span class="comment">// create cube geometry from the shape</span>
+        <span class="predefined-type">Box</span> b = <span class="keyword">new</span> <span class="predefined-type">Box</span>(<span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>);                <span class="comment">// 创建一个边长为1的立方体网格</span>
+        Geometry geom = <span class="keyword">new</span> Geometry(<span class="string"><span class="delimiter">&quot;</span><span class="content">Box</span><span class="delimiter">&quot;</span></span>, b);  <span class="comment">// 使用这个网格来设置几何体(Geometry)的形状</span>
+
         Material mat = <span class="keyword">new</span> Material(assetManager,
-          <span class="string"><span class="delimiter">&quot;</span><span class="content">Common/MatDefs/Misc/Unshaded.j3md</span><span class="delimiter">&quot;</span></span>);  <span class="comment">// create a simple material</span>
-        mat.setColor(<span class="string"><span class="delimiter">&quot;</span><span class="content">Color</span><span class="delimiter">&quot;</span></span>, ColorRGBA.Blue);   <span class="comment">// set color of material to blue</span>
-        geom.setMaterial(mat);                   <span class="comment">// set the cube's material</span>
-        rootNode.attachChild(geom);              <span class="comment">// make the cube appear in the scene</span>
+            <span class="string"><span class="delimiter">&quot;</span><span class="content">Common/MatDefs/Misc/Unshaded.j3md</span><span class="delimiter">&quot;</span></span>);<span class="comment">// 创建一个简单的材质</span>
+        mat.setColor(<span class="string"><span class="delimiter">&quot;</span><span class="content">Color</span><span class="delimiter">&quot;</span></span>, ColorRGBA.Blue);   <span class="comment">// 把材质的颜色(Color)参数设为蓝色(Blue)</span>
+        geom.setMaterial(mat);                   <span class="comment">// 使用这个材质来设置几何体(Geometry)的外观</span>
+
+        rootNode.attachChild(geom);              <span class="comment">// 让这个3D方块显示在画面上</span>
     }
 }</code></pre></div></div>
 <div class="paragraph"><p><b class="button">鼠标右键点击</b> <code>HelloJME3</code> 类，然后选择 <code>Run</code>。 如果jME3的设置对话框弹出，确认默认设置。</p></div>
@@ -50,31 +53,33 @@
 <div class="sect2"><h3 id="理解代码">理解代码</h3><div class="paragraph"><p>以上代码初始化了场景和启动程序。</p></div>
 <div class="sect2"><h3 id="启动simpleapplication">启动SimpleApplication</h3><div class="paragraph"><p>看到第1行，你的 HelloJME3.java 类继承了`com.jme3.app.SimpleApplication`。</p></div>
 <div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">HelloJME3</span> <span class="directive">extends</span> SimpleApplication {
-  <span class="comment">// your code... 你的代码</span>
+    <span class="comment">// 你的代码...</span>
 }</code></pre></div></div>
-<div class="paragraph"><p>每个JME3游戏是一个 <code>com.jme3.app.SimpleApplication</code> 类的实例。SimpleApplication是一个最简单的应用：它管理3d场景，检测用户输入，更新游戏状况和自动渲染窗口。这些是游戏引擎的核心作用。你通过继承这个类，然后修改定制你自己的游戏。</p></div>
+<div class="paragraph"><p>每个JME3游戏是一个 <code>com.jme3.app.SimpleApplication</code> 类的实例。SimpleApplication是一个最简单的应用：它管理3d场景，检测用户输入，更新游戏状况和自动渲染窗口。这些是游戏引擎的核心功能。你通过继承这个类，然后修改定制你自己的游戏。</p></div>
 <div class="paragraph"><p>你通过main()函数来启动所有JME3游戏，就像所有标准Java程序一样。</p></div>
 <div class="olist arabic"><ol class="arabic"><li><p>实例化你基于 `SimpleApplication`的类</p></li><li><p>调用程序的 <code>start()</code> 函数来启动游戏引擎。</p></li></ol></div>
 <div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> main(<span class="predefined-type">String</span><span class="type">[]</span> args){
-        HelloJME3 app = <span class="keyword">new</span> HelloJME3(); <span class="comment">// instantiate the game 实例化游戏</span>
-        app.start();                     <span class="comment">// start the game! 启动游戏</span>
+        HelloJME3 app = <span class="keyword">new</span> HelloJME3(); <span class="comment">// 实例化游戏</span>
+        app.start();                     <span class="comment">// 启动游戏!</span>
     }</code></pre></div></div>
 <div class="paragraph"><p><code>app.start();</code> 行打开应用窗口。让我们一起学习如何向窗口（场景）加入一些东西。</p></div></div>
 <div class="sect2"><h3 id="理解术语">理解术语</h3><table class="tableblock frame-all grid-all spread"><colgroup><col style="width: 50%;"><col style="width: 50%;"></colgroup><thead><tr><th class="tableblock halign-left valign-top">你想要做什么</th><th class="tableblock halign-left valign-top">你如何用JME3术语来描述它</th></tr></thead><tbody><tr><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p>你想创建一个立方体</p></div></div></td><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p>我创建一个 1x1x1 Box shape（盒状）的Geometry（几何形状）</p></div></div></td></tr><tr><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p>你想用蓝颜色</p></div></div></td><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p>我创建一个蓝颜色的材质</p></div></div></td></tr><tr><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p>你想给立方体涂上蓝色</p></div></div></td><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p>我设置几何形状的材质</p></div></div></td></tr><tr><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p>你想把立方体放进场景</p></div></div></td><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p>我attach（附着）几何形状到rootNode（根节点）</p></div></div></td></tr><tr><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p>你想立方体放在窗口中央</p></div></div></td><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p>我在 <code>Vector3f.ZERO</code> 创建几何形状</p></div></div></td></tr></tbody></table>
 <div class="paragraph"><p>如果你对这些单词不熟悉，查看 <a href="../jme3/the_scene_graph.html">the Scene Graph</a></p></div></div>
 <div class="sect2"><h3 id="初始化场景">初始化场景</h3><div class="paragraph"><p>查看剩下的代码。 <code>simpleInitApp()</code> 函数是在程序开始自动调用一次。所有JME3游戏一定含有这个函数。在函数 <code>simpleInitApp()</code> 中，你在游戏开始前加载游戏对象。</p></div>
 <div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="type">void</span> simpleInitApp() {
-       <span class="comment">// your initialization code... 你的初始化代码。。。</span>
+       <span class="comment">// 你的初始化代码...</span>
     }</code></pre></div></div>
 <div class="paragraph"><p>立方体的初始化代码如下：</p></div>
 <div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="type">void</span> simpleInitApp() {
-        <span class="predefined-type">Box</span> b = <span class="keyword">new</span> <span class="predefined-type">Box</span>(<span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>); <span class="comment">// create a 1x1x1 box shape</span>
-        Geometry geom = <span class="keyword">new</span> Geometry(<span class="string"><span class="delimiter">&quot;</span><span class="content">Box</span><span class="delimiter">&quot;</span></span>, b);  <span class="comment">// create a cube geometry from the box shape</span>
+        <span class="predefined-type">Box</span> b = <span class="keyword">new</span> <span class="predefined-type">Box</span>(<span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>);                <span class="comment">// 创建一个边长为1的立方体网格</span>
+        Geometry geom = <span class="keyword">new</span> Geometry(<span class="string"><span class="delimiter">&quot;</span><span class="content">Box</span><span class="delimiter">&quot;</span></span>, b);  <span class="comment">// 使用这个网格来设置几何体(Geometry)的形状</span>
+
         Material mat = <span class="keyword">new</span> Material(assetManager,
-          <span class="string"><span class="delimiter">&quot;</span><span class="content">Common/MatDefs/Misc/Unshaded.j3md</span><span class="delimiter">&quot;</span></span>);  <span class="comment">// create a simple material</span>
-        mat.setColor(<span class="string"><span class="delimiter">&quot;</span><span class="content">Color</span><span class="delimiter">&quot;</span></span>, ColorRGBA.Blue);   <span class="comment">// set color of material to blue</span>
-        geom.setMaterial(mat);                   <span class="comment">// set the cube geometry 's material</span>
-        rootNode.attachChild(geom);              <span class="comment">// make the cube geometry appear in the scene</span>
+            <span class="string"><span class="delimiter">&quot;</span><span class="content">Common/MatDefs/Misc/Unshaded.j3md</span><span class="delimiter">&quot;</span></span>);<span class="comment">// 创建一个简单的材质</span>
+        mat.setColor(<span class="string"><span class="delimiter">&quot;</span><span class="content">Color</span><span class="delimiter">&quot;</span></span>, ColorRGBA.Blue);   <span class="comment">// 把材质的颜色(Color)参数设为蓝色(Blue)</span>
+        geom.setMaterial(mat);                   <span class="comment">// 使用这个材质来设置几何体(Geometry)的外观</span>
+
+        rootNode.attachChild(geom);              <span class="comment">// 让这个3D方块显示在画面上</span>
     }</code></pre></div></div>
 <div class="paragraph"><p>一个JME3游戏有以下初始化过程：</p></div>
 <div class="olist arabic"><ol class="arabic"><li><p>初始化游戏对象：</p><div class="ulist"><ul><li><p>你创建或加载对象和放置它们。</p></li><li><p>你通过附着对象到 <code>rootNode</code> 来让他们在场景中显示。</p></li><li><p><strong>例子</strong> 加载玩家，地形，天空，敌对目标，障碍物，&#8230;&#8203;，和放置它们到它们的起始位置。</p></li></ul></div></li><li><p>初始化变量：</p><div class="ulist"><ul><li><p>你创建变量来跟踪游戏状况。</p></li><li><p>你设置变量的初始值。</p></li><li><p><strong>例子:</strong> 设置 <code>score</code> 到0，设置 <code>health</code> 到100%， &#8230;&#8203;</p></li></ul></div></li><li><p>初始化按键和鼠标的监听：</p><div class="ulist"><ul><li><p>以下输入已经提前设置：</p><div class="ulist"><ul><li><p><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> 按键 - 移动</p></li><li><p>鼠标移动和方向键 - 转动摄像机</p></li><li><p><kbd>Esc</kbd>  按键 - 退出游戏</p></li></ul></div></li><li><p>定义你自己的附加按键和鼠标监听。</p></li><li><p>*例子：*点击鼠标来发射子弹，按下 <kbd>Space</kbd> 来跳跃， &#8230;&#8203;</p></li></ul></div></li></ol></div></div>
@@ -112,7 +117,7 @@
 <div class="paragraph"><p>继续 <a href="../beginner/hello_node.html">Hello Node</a> 教程，你会学到更多关于如何初始化游戏世界或者说场景的知识。</p></div>
 <hr>
 <div class="paragraph"><p>参阅：</p></div>
-<div class="ulist"><ul><li><p><a href="../getting-start/index.html">安装jME3</a></p></li><li><p><a href="../jme3/simpleapplication_from_the_commandline.html">SimpleApplication From the Commandline</a></p></li><li><p><a href="../sdk/project_creation.html">创建jME3工程</a></p></li><li><p><a href="../jme3/advanced/application_states.html">AppStates</a></p></li></ul></div></div></div></div><div id="footer"><div id="footer-text">Version <br>Last updated 2018-07-25 01:27:00 +00:00</div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script>docsearch({
+<div class="ulist"><ul><li><p><a href="../getting-start/index.html">安装jME3</a></p></li><li><p><a href="../jme3/simpleapplication_from_the_commandline.html">SimpleApplication From the Commandline</a></p></li><li><p><a href="../sdk/project_creation.html">创建jME3工程</a></p></li><li><p><a href="../jme3/advanced/application_states.html">AppStates</a></p></li></ul></div></div></div></div><div id="footer"><div id="footer-text">Version <br>Last updated 2018-07-25 02:01:42 +00:00</div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script>docsearch({
   apiKey: 'a736b6d93de805e26ec2f49b55013fbd',
   indexName: 'jmonkeyengine',
   inputSelector: '#doc-search',
