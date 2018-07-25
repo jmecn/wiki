@@ -71,25 +71,28 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.shape.Box;
 import com.jme3.math.ColorRGBA;
 
-/** Sample 1 - how to get started with the most simple JME 3 application.
- * Display a blue 3D cube and view from all sides by
- * moving the mouse and pressing the WASD keys. */
+/**
+ * 例1 - 创建一个最简单的 jME3 应用程序.
+ * 在画面中显示一个蓝色的3D方块，通过滑动鼠标、按WASD健来控制摄像机。
+ */
 public class HelloJME3 extends SimpleApplication {
 
     public static void main(String[] args){
         HelloJME3 app = new HelloJME3();
-        app.start(); // start the game
+        app.start(); // 启动游戏
     }
 
     @Override
     public void simpleInitApp() {
-        Box b = new Box(1, 1, 1); // create cube shape
-        Geometry geom = new Geometry("Box", b);  // create cube geometry from the shape
+        Box b = new Box(1, 1, 1);                // 创建一个边长为1的立方体网格
+        Geometry geom = new Geometry("Box", b);  // 使用这个网格来设置几何体(Geometry)的形状
+
         Material mat = new Material(assetManager,
-          "Common/MatDefs/Misc/Unshaded.j3md");  // create a simple material
-        mat.setColor("Color", ColorRGBA.Blue);   // set color of material to blue
-        geom.setMaterial(mat);                   // set the cube's material
-        rootNode.attachChild(geom);              // make the cube appear in the scene
+            "Common/MatDefs/Misc/Unshaded.j3md");// 创建一个简单的材质
+        mat.setColor("Color", ColorRGBA.Blue);   // 把材质的颜色(Color)参数设为蓝色(Blue)
+        geom.setMaterial(mat);                   // 使用这个材质来设置几何体(Geometry)的外观
+
+        rootNode.attachChild(geom);              // 让这个3D方块显示在画面上
     }
 }
 ----
@@ -115,12 +118,12 @@ btn:[鼠标右键点击] `HelloJME3` 类，然后选择 `Run`。 如果jME3的�
 ----
 
 public class HelloJME3 extends SimpleApplication {
-  // your code... 你的代码
+    // 你的代码...
 }
 
 ----
 
-每个JME3游戏是一个 `com.jme3.app.SimpleApplication` 类的实例。SimpleApplication是一个最简单的应用：它管理3d场景，检测用户输入，更新游戏状况和自动渲染窗口。这些是游戏引擎的核心作用。你通过继承这个类，然后修改定制你自己的游戏。
+每个JME3游戏是一个 `com.jme3.app.SimpleApplication` 类的实例。SimpleApplication是一个最简单的应用：它管理3d场景，检测用户输入，更新游戏状况和自动渲染窗口。这些是游戏引擎的核心功能。你通过继承这个类，然后修改定制你自己的游戏。
 
 你通过main()函数来启动所有JME3游戏，就像所有标准Java程序一样。
 
@@ -131,8 +134,8 @@ public class HelloJME3 extends SimpleApplication {
 ----
 
     public static void main(String[] args){
-        HelloJME3 app = new HelloJME3(); // instantiate the game 实例化游戏
-        app.start();                     // start the game! 启动游戏
+        HelloJME3 app = new HelloJME3(); // 实例化游戏
+        app.start();                     // 启动游戏!
     }
 
 ----
@@ -172,7 +175,7 @@ a|我在 `Vector3f.ZERO` 创建几何形状
 ----
 
     public void simpleInitApp() {
-       // your initialization code... 你的初始化代码。。。
+       // 你的初始化代码...
     }
 
 ----
@@ -183,13 +186,15 @@ a|我在 `Vector3f.ZERO` 创建几何形状
 ----
 
     public void simpleInitApp() {
-        Box b = new Box(1, 1, 1); // create a 1x1x1 box shape
-        Geometry geom = new Geometry("Box", b);  // create a cube geometry from the box shape
+        Box b = new Box(1, 1, 1);                // 创建一个边长为1的立方体网格
+        Geometry geom = new Geometry("Box", b);  // 使用这个网格来设置几何体(Geometry)的形状
+
         Material mat = new Material(assetManager,
-          "Common/MatDefs/Misc/Unshaded.j3md");  // create a simple material
-        mat.setColor("Color", ColorRGBA.Blue);   // set color of material to blue
-        geom.setMaterial(mat);                   // set the cube geometry 's material
-        rootNode.attachChild(geom);              // make the cube geometry appear in the scene
+            "Common/MatDefs/Misc/Unshaded.j3md");// 创建一个简单的材质
+        mat.setColor("Color", ColorRGBA.Blue);   // 把材质的颜色(Color)参数设为蓝色(Blue)
+        geom.setMaterial(mat);                   // 使用这个材质来设置几何体(Geometry)的外观
+
+        rootNode.attachChild(geom);              // 让这个3D方块显示在画面上
     }
 
 ----
