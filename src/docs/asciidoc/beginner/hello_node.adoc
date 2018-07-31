@@ -117,30 +117,30 @@ a|移动，选择和改变大小 = 变换对象。
 
 |===
 
-Every JME3 application has a rootNode: Your game automatically inherits the `rootNode` object from SimpleApplication. Everything attached to the rootNode is part of the scene graph. The elements of the scene graph are Spatials.
+所有JME3应用有一个rootNode： 你的游戏从SimpleApplica自动继承了 `rootNode` 。所有附着在rootNode的对象是场景的一部分。场景的组成是空间物体。
 
-*  A Spatial contains the location, rotation, and scale of an object.
-*  A Spatial can be loaded, transformed, and saved.
-*  There are two types of Spatials: Nodes and Geometries.
+* 空间物体包括物体的位移，旋转和大小。
+* 空间物体可以读取，变换和保存。
+* 有两种空间物体：Nodes（节点）和Geometries（几何体）。
 
 [cols="10,45,45", options="header"]
 |===
 
 <a|
-a| Geometry
-a| Node
+a| Geometry（几何体）
+a| Node（节点）
 
-a| Visibility:
-a| A Geometry is a visible scene object.
-a| A Node is an invisible "`handle`" for scene objects.
+a| 可见性：
+a| 几何体是可见的物体。
+a| 节点是不可见的，负责管理场景对象。
 
-a| Purpose:
-a| A Geometry stores an object's looks.
-a| A Node groups Geometries and other Nodes together.
+a| 目的:
+a| 几何体包含对象的形状信息。
+a| 节点给几何体和其他节点组群。
 
-a| Examples:
-a| A box, a sphere, a player, a building, a piece of terrain, a vehicle, missiles, NPCs, etc…
-a| The `rootNode`, a floor node grouping several terrains, a custom vehicle-with-passengers node, a player-with-weapon node, an audio node, etc…
+a| 示例:
+a| 方块，球体，玩家，建筑，地形，汽车，导弹，NPCs等
+a| 根节点，节点包含几个地形，节点包含汽车和乘客，节点包含玩家和武器，音频的节点等
 
 |===
 
