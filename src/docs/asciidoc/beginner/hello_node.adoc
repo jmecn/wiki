@@ -16,15 +16,15 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 * 这个教程假设你了解 <<jme3/the_scene_graph#,the Scene Graph>> 。
 * 或者查看 <<jme3/scenegraph_for_dummies#,Scene Graph for Dummies>> 。
 
-当创建3d游戏时
+在创建一个3d游戏
 
-. 你创建一些物体，比如玩家，建筑等等。
-. 你把这些物体添加到场景里。
-. 移动，旋转它们，或给它们调整大小，上色和制作动画。
+. 要创景一些场景对象，比如玩家，建筑等。
+. 要把这些对象添加到场景
+. 要给予这些对象：移动，旋转，改变大小，上色和动画
 
-你将学习场景如何表达3d的世界和rootNode的重要性。 你将学习如何制作简单的物体，如何让他们携带自定义信息（比如生命值）和如何变换它们的坐标，旋转和大小。你将了解场景里两种不同的 "`Spatials（空间物体）`" ：Nodes（节点）和Geometries（几何体）。
+在这里你会学到：场景是如何表达一个3d世界, rooNode的重要性。你会学到：如何创建简单的对象，如何让它们携带自定义数据（比如血量）和如何“变换”它们（移动，旋转，改变大小）。你会学到两个空间物体的不同：Nodes（节点）和Geometries（几何体）。
 
-== 代码示例
+== 示例
 
 [source,java]
 ----
@@ -41,8 +41,8 @@ import com.jme3.scene.shape.Box;
 /** Sample 2 - How to use nodes as handles to manipulate objects in the scene.
  * You can rotate, translate, and scale objects by manipulating their parent nodes.
  * The Root Node is special: Only what is attached to the Root Node appears in the scene. 
- * 你可以通过物体的父节点旋转，移动和改变这个物体的大小
- * rootNode（根节点） 是特别的：只有被附着在rootNode的节点才会显示在场景中*/
+ * 你可以通过变换对象的父节点来变换对象。
+ * 根节点（rootNode）是特别的：这有附着在根节点的对象才会被渲染到画布。*/
 public class HelloNode extends SimpleApplication {
 
     public static void main(String[] args){
@@ -54,7 +54,7 @@ public class HelloNode extends SimpleApplication {
     public void simpleInitApp() {
 
         /** create a blue box at coordinates (1,-1,1) 
-            在坐标（1，-1,1）创建蓝色方块*/
+            在坐标（1,-1,1）创建蓝方块*/
         Box box1 = new Box(1,1,1);
         Geometry blue = new Geometry("Box", box1);
         blue.setLocalTranslation(new Vector3f(1,-1,1));
@@ -64,7 +64,7 @@ public class HelloNode extends SimpleApplication {
         blue.setMaterial(mat1);
 
         /** create a red box straight above the blue one at (1,3,1) 
-            在坐标（1,3,1）蓝色方块的正上方创建红色方块*/
+            在坐标（1,3，1）创建红方块*/
         Box box2 = new Box(1,1,1);
         Geometry red = new Geometry("Box", box2);
         red.setLocalTranslation(new Vector3f(1,3,1));
@@ -74,46 +74,46 @@ public class HelloNode extends SimpleApplication {
         red.setMaterial(mat2);
 
         /** Create a pivot node at (0,0,0) and attach it to the root node 
-            在坐标（0,0,0）创建节点，并把它附着在根节点*/
+            根节点坐标（0,0,0）附着上新的节点*/
         Node pivot = new Node("pivot");
         rootNode.attachChild(pivot); // put this node in the scene
 
         /** Attach the two boxes to the *pivot* node. (And transitively to the root node.) 
-            把两个方块附着到这个节点上。（过渡性的附着在根节点上）*/
+            在这个节点附着上方块*/
         pivot.attachChild(blue);
         pivot.attachChild(red);
-        /** Rotate the pivot node: Note that both boxes have rotated! */
+        /** Rotate the pivot node: Note that both boxes have rotated! 
+            选择节点： 注意方块也跟着旋转*/
         pivot.rotate(.4f,.4f,0f);
     }
 }
 ----
 
-编译和运行代码。你应该会看到两个有颜色的和相同旋转角度的方块。
+编译和运行代码。 你应该看到两个方块，而且它们都有一样的旋转方向。
 
+== 理解术语
 
-== Understanding the Terminology
-
-In this tutorial, you learn some new terms:
+在这里，你会学到新的术语：
 [cols="2", options="header"]
 |===
 
-a|What you want to do?
-a|How you say it in JME3 terminology
+a|你想怎么做？
+a|如何用JME3的术语表达？
 
-a|Lay out the 3D scene.
-a|Populate the scene graph.
+a|布置场景。
+a|填充对象到场景。
 
-a|Create scene objects.
-a|Create Spatials. (e.g. create Geometries)
+a|创建场景对象。
+a|创景空间物体（比如创建几何体）
 
-a|Make an object appear in the scene.
-a|Attach a Spatial to the rootNode.
+a|使对象在画布上显示。
+a|附着空间物体到rootNode。
 
-a|Make an object disappear from the scene.
-a|Detach the Spatial from the rootNode.
+a|使对象在画布上消失。
+a|取消物体在rootNode的附着。
 
-a|Position/move, turn, or resize an object.
-a|Translate, or rotate, or scale an object = transform an object.
+a|移动，选择和改变大小
+a|移动，选择和改变大小 = 变换对象。
 
 |===
 
