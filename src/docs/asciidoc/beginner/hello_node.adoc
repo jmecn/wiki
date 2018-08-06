@@ -229,28 +229,27 @@ a| 根节点，节点包含几个地形，节点包含汽车和乘客，节点�
 
 如果你的应用只运行到这里，你会看到两个方块都向同一个方向旋转。。
 
-=== What is a Pivot Node?
+=== 什么是 “Pivot” 节点?
 
-You can transform (e.g. rotate) Geometries around their own center, or around a user defined center point. A user defined center point for one or more Geometries is called a pivot.
+你可以相对于“几何体的中心”或者“用户定义的中心”变换（比如，旋转）几何体。这个用户定义的中心就是“Pivor”节点。用户可以用它自定以一个或多个几何体的中心。
 
-In this example, you have grouped two Geometries by attaching them to one pivot Node. You use the pivot Node as a handle to rotate the two Geometries together around one common center. Rotating the pivot Node rotates all attached Geometries, in one step. The pivot node is the center of the rotation. Before attaching the other Geometries, make certain that the pivot node is at (0,0,0). Transforming a parent Node to transform all attached child Spatials is a common task. You will use this method a lot in your games when you move Spatials around.
+在这个实例里，有两个几何体绑定在一个“pivot”节点。通过变换“pivot”节点，同时变换两个几何体。旋转“pivot”节点会同时旋转所有被绑定的几何体。“pivot”节点的中心就是旋转的中心。在绑定其他几何体时，先确定“pivot”节点在坐标（0,0,0）。变换父节点会同时变换所有的子节点。你将会经常用到这个方法。
 
-*Examples:* A vehicle and its driver move together; a planet with its moon orbits the sun.
+*例子：* 一辆汽车和它的驾驶员同时移动；一个带有卫星的行星围绕恒星旋转。
 
-Contrast this case with the other option. If you don't create an extra pivot node and transform a Geometry, then every transformation is done relative to the Geometry's origin (typically the center).
+这个实例里，如果你不创建“pivot”节点而是只变换几何体，那么所有变换都是相对于几何体自己的中心。
 
-*Examples:* If you rotate each cube directly (using `red.rotate(0.1f , 0.2f , 0.3f);` and `blue.rotate(0.5f , 0.0f , 0.25f);`), then each cube is rotated individually around its center. This is similar to a planet rotating around its own center.
+*例子：* 如果旋转每一个方块（用 `red.rotate(0.1f , 0.2f , 0.3f);` 和 `blue.rotate(0.5f , 0.0f , 0.25f);`），那么每个方块都会相对于自身的中心旋转。这就像行星的自转。
 
-
-== How do I Populate the Scenegraph?
+== 如何布置场景?
 [cols="30,70", options="header"]
 |===
 
-a| Task…?
-a| Solution!
+a| 目标…?
+a| 解决方法!
 
-a| Create a Spatial.
-a| Create a Mesh shape, wrap it into a Geometry, and give it a Material. For example:
+a| 创建一个空间体（Spatial）.
+a| 创建一个网格，把它包装成几何体然后给予它材质。比如：
 [source,java]
 ----
 Box mesh = new Box(Vector3f.ZERO, 1, 1, 1); // a cuboid default mesh
@@ -261,16 +260,16 @@ thing.setMaterial(mat);
 ----
 
 
-a| Make an object appear in the scene.
-a| Attach the Spatial to the `rootNode`, or to any node that is attached to the rootNode.
+a| 在画布显示物体。
+a| 绑定空间体到 `rootNode` ，或者任何绑定在 rootNode 的节点。
 [source,java]
 ----
 rootNode.attachChild(thing);
 ----
 
 
-a| Remove objects from the scene.
-a| Detach the Spatial from the `rootNode`, and from any node that is attached to the rootNode.
+a| 从画布移除物体。
+a| 解除空间体在 `rootNode` 和任何绑定在 rootNode 的节点的绑定。
 [source,java]
 ----
 rootNode.detachChild(thing);
@@ -282,8 +281,8 @@ rootNode.detachAllChildren();
 ----
 
 
-a| Find a Spatial in the scene by the object's name, or ID, or by its position in the parent-child hierarchy.
-a| Look at the node's children or parent:
+a| 通过对象名字，ID或父子关系找到空间体。
+a| 通过节点的父子找：
 [source,java]
 ----
 Spatial thing = rootNode.getChild("thing");
@@ -300,8 +299,8 @@ Spatial parent = myNode.getParent();
 ----
 
 
-a| Specify what should be loaded at the start.
-a| Everything you initialize and attach to the `rootNode` in the `simpleInitApp()` method is part of the scene at the start of the game.
+a| 决定什么会在初始是加载。
+a| 所有你初始化了同时绑定在 `rootNode` 的对象将是游戏初始场景的一部分。
 
 |===
 
