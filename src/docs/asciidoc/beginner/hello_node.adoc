@@ -304,35 +304,38 @@ a| 所有你初始化了同时绑定在 `rootNode` 的对象将是游戏初始�
 
 |===
 
-
+////
 == How do I Transform Spatials?
 
 There are three types of 3D transformation: Translation, Scaling, and Rotation.
+////
+== 如何变换空间体
+
+变换有3种： 位移，旋转和大小调整
+
 [cols="55,15,15,15", options="header"]
 |===
+a| 位移会移动空间体
+a| X轴
+a| Y轴
+a| Z轴
 
-a| Translation moves Spatials
-a| X-axis
-a| Y-axis
-a| Z-axis
-
-a| Specify the new location in three dimensions: How far away is it from the origin going right-up-forward? +
-To move a Spatial _to_ specific coordinates, such as (0,40.2f,-2), use:
+a| 用3个维度来表示新的位移： 在原点的位移向 右-上-前 3个方向上移动多少来移动到目标位移，比如(0,40.2f,-2）：
 [source,java]
 ----
 thing.setLocalTranslation( new Vector3f( 0.0f, 40.2f, -2.0f ) );
 ----
 
- To move a Spatial _by_ a certain amount, e.g. higher up (y=40.2f) and further back (z=-2.0f):
+ 在原来的位移移动一定的量，比如更高(y=40.2f)和更远(z=-2.0f):
 
 [source,java]
 ----
 thing.move( 0.0f, 40.2f, -2.0f );
 ----
 
-a|+right -left
-a|+up -down
-a|+forward -backward
+a|+右 -左
+a|+上 -下
+a|+前 -后
 
 |===
 [cols="55,15,15,15", options="header"]
