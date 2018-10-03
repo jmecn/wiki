@@ -13,8 +13,8 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 在这个教程，我们来学习3d场景的创建。
 
-* 这个教程假设你了解 <<jme3/the_scene_graph#,the Scene Graph>> 。
-* 或者查看 <<jme3/scenegraph_for_dummies#,Scene Graph for Dummies>> 。
+* 这个教程假设你了解 <<jme3/the_scene_graph#,场景图>> 。
+* 或者查看 <<jme3/scenegraph_for_dummies#,给初学者的场景图>> 。
 
 在创建一个3d游戏
 
@@ -445,7 +445,7 @@ int id = pivot.getUserData( "pivot id" );
 
 == 结语
 
-你学到了3d场景是一个带有空间体的场景：可视的几何体和不可视的节点。你可以变换空间体，或者绑定它们到节点然后变换节点。你学会了最方便的方法来添加自定义个体数据（比如玩家生命和汽车速度）到几何体。
+你学到了3d场景是一个带有空间体的场景图：可视的几何体和不可视的节点。你可以变换空间体，或者绑定它们到节点然后变换节点。你学会了最方便的方法来添加自定义个体数据（比如玩家生命和汽车速度）到几何体。
 
 因为标准形状比如球体和立方体不经常用，在下一个章节你可以学到
 <<jme3/beginner/hello_asset#,导入3d模型等资源>>.
