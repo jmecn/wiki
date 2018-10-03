@@ -113,7 +113,6 @@
 - [ ] organize i18n / lang
 - [ ] use tags to create taxonomy
 
-
 [1]:https://travis-ci.org/jmecn/wiki.svg?branch=master
 [2]:https://travis-ci.org/jmecn/wiki
 [3]:http://jmonkeyengine.org/
