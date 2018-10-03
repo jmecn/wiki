@@ -20,9 +20,9 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 . 要创景一些场景对象，比如玩家，建筑等。
 . 要把这些对象添加到场景
-. 要给予这些对象：移动，旋转，改变大小，上色和动画
+. 要给予这些对象：移动，旋转，缩放，上色和动画
 
-在这里你会学到：场景是如何表达一个3d世界, rooNode的重要性。你会学到：如何创建简单的对象，如何让它们携带自定义数据（比如血量）和如何“变换”它们（移动，旋转，改变大小）。你会学到两个空间物体的不同：Nodes（节点）和Geometries（几何体）。
+在这里你会学到：场景是如何表达一个3d世界, rooNode的重要性。你会学到：如何创建简单的对象，如何让它们携带自定义数据（比如血量）和如何“变换”它们（移动，旋转，缩放）。你会学到两个空间物体的不同：Nodes（节点）和Geometries（几何体）。
 
 == 示例
 
@@ -112,8 +112,8 @@ a|附着空间物体到rootNode。
 a|使对象在画布上消失。
 a|解除物体在rootNode的绑定。
 
-a|移动，选择和改变大小
-a|移动，选择和改变大小 = 变换对象。
+a|移动，选择和缩放
+a|移动，选择和缩放 = 变换对象。
 
 |===
 
@@ -311,11 +311,11 @@ There are three types of 3D transformation: Translation, Scaling, and Rotation.
 ////
 == 如何变换空间体
 
-变换有3种： 位移，旋转和大小调整
+变换有3种： 位移，旋转和缩放
 
 [cols="55,15,15,15", options="header"]
 |===
-a| 位移会移动空间体
+a| 位移来移动空间体
 a| X轴
 a| Y轴
 a| Z轴
@@ -341,41 +341,41 @@ a|+前 -后
 [cols="55,15,15,15", options="header"]
 |===
 
-a| Scaling resizes Spatials
-a| X-axis
-a| Y-axis
-a| Z-axis
+a| 缩放来改变空间体大小
+a| x轴
+a| y轴
+a| z轴
 
-a|Specify the scaling factor in each dimension: length, height, width. +
-A value between 0.0f and 1.0f shrinks the Spatial; bigger than 1.0f stretches it; 1.0f keeps it the same. +
-Using the same value for each dimension scales proportionally, different values stretch it. +
-To scale a Spatial 10 times longer, one tenth the height, and keep the same width:
+a|输入在每个维度的缩放比例：长度，高度，宽度。 +
+0.0f到1.0f的数值把空间体变小；大于1.0f的数值把空间体变大；1.0f不缩放空间体。 +
+用相同的数值缩放会保持空间体的比例，不同数值会相应的拉伸空间体。 +
+比如，把空间体变成，10倍于原来的长度，0.1倍于原来的高度，保持高度不变：
 [source,java]
 ----
 thing.scale( 10.0f, 0.1f, 1.0f );
 ----
 
-a|length
-a|height
-a|width
+a|长度
+a|高度
+a|宽度
 
 |===
 [cols="55,15,15,15", options="header"]
 |===
 
-a| Rotation turns Spatials
-a| X-axis (Pitch)
-a| Y-axis (Yaw)
-a| Z-axis (Roll)
+a| 旋转来转动空间体
+a| X轴 俯仰角(Pitch)
+a| Y轴 偏航角(Yaw)
+a| Z轴 旋转角(Roll)
 
-a|3-D rotation is a bit tricky (<<jme3/rotate#,learn details here>>). In short: You can rotate around three axes: Pitch, yaw, and roll. You can specify angles in degrees by multiplying the degrees value with `FastMath.DEG_TO_RAD`. +
-To roll an object 180° around the z axis:
+a|3D旋转可能会有点复杂 (<<jme3/rotate#,learn details here>>)。简单来说：你可以绕3个轴旋转：俯仰角，偏航角和旋转角。你可以输入弧度或用角度乘以 `FastMath.DEG_TO_RAD` 。 +
+比如，旋转物体的Z轴180度：
 [source,java]
 ----
 thing.rotate( 0f , 0f , 180*FastMath.DEG_TO_RAD );
 ----
 
-Tip: If your game idea calls for a serious amount of rotations, it is worth looking into <<jme3/quaternion#,quaternions>>, a data structure that can combine and store rotations efficiently.
+小贴士：如果你的游戏运用到大量旋转，很值得查看 <<jme3/quaternion#,四元数(quaternions)>>，一个数据结构可以效率的运算和保存。
 
 [source,java]
 ----
@@ -383,38 +383,38 @@ thing.setLocalRotation(
   new Quaternion().fromAngleAxis(180*FastMath.DEG_TO_RAD, new Vector3f(1,0,0)));
 ----
 
-a|nodding your head
-a|shaking your head
-a|cocking your head
+a|点头
+a|摇头
+a|左右摆动头
 
 |===
 
 
-== How do I Troubleshoot Spatials?
+== 我应该如何故障排除空间体？
 
-If you get unexpected results, check whether you made the following common mistakes:
+如果你得到意料之外的结果，可以根据以下检查你的通常错误：
 [cols="40,60", options="header"]
 |===
 
-a| Problem?
-a| Solution!
+a| 问题?
+a| 解决方案!
 
-a| A created Geometry does not appear in the scene.
-a| Have you attached it to (a node that is attached to) the rootNode? +
-Does it have a Material? +
-What is its translation (position)? +
-Is it behind the camera or covered up by another Geometry? +
-Is it too tiny or too gigantic to see? +
-Is it too far from the camera? (Try link:http://javadoc.jmonkeyengine.org/com/jme3/renderer/Camera.html#setFrustumFar(float)[cam.setFrustumFar](111111f); to see further)
+a| 创建的几何体没能在场景中显示。
+a| 是否有把这个几何体绑定到rootNode？ +
+它有材质吗？ +
+它的变换是什么（位置）？ +
+它是在相机的后面还是被其他几何体挡住了？ +
+它是否太小或太大了？ +
+它是否离相机太远了？ (尝试 link:http://javadoc.jmonkeyengine.org/com/jme3/renderer/Camera.html#setFrustumFar(float)[cam.setFrustumFar](111111f); 来看得更远) +
 
-a| A Spatial rotates in unexpected ways.
-a| Did you use radian values, and not degrees? (If you used degrees, multiply them with FastMath.DEG_TO_RAD to convert them to radians)  +
-Did you create the Spatial at the origin (Vector.ZERO) before moving it? +
-Did you rotate around the intended pivot node or around something else? +
-Did you rotate around the right axis?
+a| 空间体的旋转不是所想要的。
+a| 用的是角度还是弧度？（如果用的是角度，用 FastMath.DEG_TO_RAD 乘以它们来得到弧度） +
+是否在移动它之前创建空间体到原点 (Vector.ZERO) ? +
+是否根据正确的枢轴（pivot）节点旋转还是别的节点？ +
+是否在正确的轴旋转？
 
-a| A Geometry has an unexpected Color or Material.
-<a| Did you reuse a Material from another Geometry and have inadvertently changed its properties? (If so, consider cloning it: mat2 = mat.clone(); )
+a| 几何体的颜色或材质不是所想的。
+<a| 你是否重用了其他几何体的材质和不经意地改动了它的属性？(是的话，考虑复制它: mat2 = mat.clone(); )
 
 |===
 
