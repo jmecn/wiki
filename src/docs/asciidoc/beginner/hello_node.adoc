@@ -18,11 +18,11 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 在创建一个3d游戏
 
-. 要创景一些场景对象，比如玩家，建筑等。
-. 要把这些对象添加到场景
-. 要给予这些对象：移动，旋转，缩放，上色和动画
+. 要创景一些场景个体，比如玩家，建筑等。
+. 要把这些个体添加到场景
+. 要给予这些个体：移动，旋转，缩放，上色和动画
 
-在这里你会学到：场景是如何表达一个3d世界, rooNode的重要性。你会学到：如何创建简单的对象，如何让它们携带自定义数据（比如血量）和如何“变换”它们（移动，旋转，缩放）。你会学到两个空间物体的不同：Nodes（节点）和Geometries（几何体）。
+在这里你会学到：场景是如何表达一个3d世界, rooNode的重要性。你会学到：如何创建简单的个体，如何让它们携带自定义数据（比如血量）和如何“变换”它们（移动，旋转，缩放）。你会学到两个空间物体的不同：Nodes（节点）和Geometries（几何体）。
 
 == 示例
 
@@ -41,8 +41,8 @@ import com.jme3.scene.shape.Box;
 /** Sample 2 - How to use nodes as handles to manipulate objects in the scene.
  * You can rotate, translate, and scale objects by manipulating their parent nodes.
  * The Root Node is special: Only what is attached to the Root Node appears in the scene. 
- * 你可以通过变换对象的父节点来变换对象。
- * 根节点（rootNode）是特别的：这有附着在根节点的对象才会被渲染到画布。*/
+ * 你可以通过变换个体的父节点来变换个体。
+ * 根节点（rootNode）是特别的：这有附着在根节点的个体才会被渲染到画布。*/
 public class HelloNode extends SimpleApplication {
 
     public static void main(String[] args){
@@ -101,23 +101,23 @@ a|你想怎么做？
 a|如何用JME3的术语表达？
 
 a|布置场景。
-a|填充对象到场景。
+a|填充个体到场景。
 
-a|创建场景对象。
+a|创建场景个体。
 a|创景空间物体（比如创建几何体）
 
-a|使对象在画布上显示。
+a|使个体在画布上显示。
 a|附着空间物体到rootNode。
 
-a|使对象在画布上消失。
+a|使个体在画布上消失。
 a|解除物体在rootNode的绑定。
 
 a|移动，选择和缩放
-a|移动，选择和缩放 = 变换对象。
+a|移动，选择和缩放 = 变换个体。
 
 |===
 
-所有JME3应用有一个rootNode： 你的游戏从SimpleApplica自动继承了 `rootNode` 。所有绑定在rootNode的对象是场景的一部分。场景的组成是空间物体。
+所有JME3应用有一个rootNode： 你的游戏从SimpleApplica自动继承了 `rootNode` 。所有绑定在rootNode的个体是场景的一部分。场景的组成是空间物体。
 
 * 空间物体包括物体的位移，旋转和大小。
 * 空间物体可以读取，变换和保存。
@@ -132,10 +132,10 @@ a| Node（节点）
 
 a| 可见性：
 a| 几何体是可见的物体。
-a| 节点是不可见的，负责管理场景对象。
+a| 节点是不可见的，负责管理场景个体。
 
 a| 目的:
-a| 几何体包含对象的形状信息。
+a| 几何体包含个体的形状信息。
 a| 节点被几何体和其他节点绑定，从而组成一个群体。
 
 a| 示例:
@@ -281,7 +281,7 @@ rootNode.detachAllChildren();
 ----
 
 
-a| 通过对象名字，ID或父子关系找到空间体。
+a| 通过个体名字，ID或父子关系找到空间体。
 a| 通过节点的父子找：
 [source,java]
 ----
@@ -300,7 +300,7 @@ Spatial parent = myNode.getParent();
 
 
 a| 决定什么会在初始是加载。
-a| 所有你初始化了同时绑定在 `rootNode` 的对象将是游戏初始场景的一部分。
+a| 所有你初始化了同时绑定在 `rootNode` 的个体将是游戏初始场景的一部分。
 
 |===
 
@@ -419,32 +419,33 @@ a| 几何体的颜色或材质不是所想的。
 |===
 
 
-== How do I Add Custom Data to Spatials?
+== 如何添加自定义数据到空间体？
 
-Many Spatials represent game characters or other entities that the player can interact with. The above code that rotates the two boxes around a common center (pivot) could be used for a spacecraft docked to a orbiting space station, for example.
+很多空间体代表游戏的角色和其他互动的个体。比如，上面围绕共同枢轴旋转两个立方体的代码可以用在连接在轨道空间站的宇宙飞船。
 
-Depending on your game, game entities do not only change their position, rotation, or scale (the transformations that you just learned about). Game entities also have custom properties, such as health, inventory carried, equipment worn for a character, or hull strength and fuel left for a spacecraft. In Java, you represent entity data as class variables, e.g. floats, Strings, or Arrays.
+根据你的游戏，游戏个体不仅位移，选装和缩放（你刚学到的“变换”）。游戏个体还有自定义的属性，比如生命值，携带物品，装备，或船体强度和空间站的所剩燃油。在Java，你用类的变量来代表对象， 比如，floats，Strings，和Arrays。
 
-You can add custom data directly to any Node or Geometry. *You do not need to extend the Node class to include variables*!
-For example, to add a custom id number to a node, you would use:
+你可以直接添加自定义数据到节点和几何体。 *你不需要extends节点的类（Node）来包含变量*！
+比如，给节点添加自定义id，你可以这样做：
 
 [source,java]
 ----
 pivot.setUserData( "pivot id", 42 );
 ----
 
-To read this Node's id number elsewhere, you would use:
+要在别处读取节点的id，你可以这样做：
 
 [source,java]
 ----
 int id = pivot.getUserData( "pivot id" );
 ----
 
-By using different Strings keys (here the key is `pivot id`), you can get and set several values for whatever data the Spatial needs to carry. When you start writing your game, you might add a fuel value to a car node, speed value to an airplane node, or number of gold coins to a player node, and much more. However, one should note that only custom objects that implements Savable can be passed.
+通过使用不同的Strings映射（keys）（这里的映射是 `pivot id`）,你可以get和set任何空间体需要携带的数据。当你开始写你的游戏时，你可能添加燃油数值到汽车节点，速度数值到飞机节点，或金币数到玩家节点，等等。但是，需要注意的是只有implements了Savable类的自定义个体可以这样做。
 
 
-== Conclusion
+== 结语
 
-You have learned that your 3D scene is a scene graph made up of Spatials: Visible Geometries and invisible Nodes. You can transform Spatials, or attach them to nodes and transform the nodes. You know the easiest way how to add custom entity properties (such as player health or vehicle speed) to Spatials.
+你学到了3d场景是一个带有空间体的场景：可视的几何体和不可视的节点。你可以变换空间体，或者绑定它们到节点然后变换节点。你学会了最方便的方法来添加自定义个体数据（比如玩家生命和汽车速度）到几何体。
 
-Since standard shapes like spheres and boxes get old fast, continue with the next chapter where you learn to <<jme3/beginner/hello_asset#,load assets such as 3-D models>>.
+因为标准形状比如球体和立方体不经常用，在下一个章节你可以学到
+<<jme3/beginner/hello_asset#,导入3d模型等资源>>.
