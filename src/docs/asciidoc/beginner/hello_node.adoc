@@ -299,7 +299,7 @@ Spatial parent = myNode.getParent();
 ----
 
 
-a| 决定什么会在初始是加载。
+a| 决定什么会在初始时加载。
 a| 所有你初始化了同时绑定在 `rootNode` 的个体将是游戏初始场景的一部分。
 
 |===
