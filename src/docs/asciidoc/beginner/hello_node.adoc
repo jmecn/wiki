@@ -368,7 +368,7 @@ a| X轴 俯仰角(Pitch)
 a| Y轴 偏航角(Yaw)
 a| Z轴 旋转角(Roll)
 
-a|3D旋转可能会有点复杂 (<<jme3/rotate#,learn details here>>)。简单来说：你可以绕3个轴旋转：俯仰角，偏航角和旋转角。你可以输入弧度或用角度乘以 `FastMath.DEG_TO_RAD` 。 +
+a|3D旋转可能会有点复杂 (<<jme3/rotate#,详情请看这里>>)。简单来说：你可以绕3个轴旋转：俯仰角，偏航角和旋转角。你可以输入弧度或用角度乘以 `FastMath.DEG_TO_RAD` 。 +
 比如，旋转物体的Z轴180度：
 [source,java]
 ----
