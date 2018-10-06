@@ -12,7 +12,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 上一篇: <<beginner/hello_node#,节点>>,
 下一篇: <<beginner/hello_main_event_loop#,主循环>>
 
-In this tutorial we will learn to load 3D models and text into the scene graph, using the jME <<jme3/advanced/asset_manager#,Asset Manager>>. You will also learn how to determine the correct paths, and which file formats to use.
+在这篇教程里，我们来学习使用 <<jme3/advanced/asset_manager#,Asset Manager>> 加载3d模型和文字到场景图，还会学习如何确定路径和文件格式。
 
 
 image::beginner/beginner-assets-models.png[beginner-assets-models.png,320,250,align="center"]
@@ -21,7 +21,7 @@ image::beginner/beginner-assets-models.png[beginner-assets-models.png,320,250,al
 
 [TIP]
 ====
-<<sdk/sample_code#,Trouble finding the files to run this sample?>> To get the assets (3D models) used in this example, add the included `jME3-testdata.jar` to your classpath. In project created with the jMonkeyEngine SDK (recommended), simply right-click your project, choose "`Properties`", go to "`Libraries`", press "`Add Library`" and add the preconfigured "`jme3-test-data`" library.
+<<sdk/sample_code#,找不到运行需要的文件?>> 要想获得这个教程里的游戏资源（3d模型），添加 `jME3-testdata.jar` 到你的classpath。在jMonkeyEngine SDK（推荐）里创建的项目，右键点击你的项目，选择"`Properties`", 然后选择 "`Libraries`", 然后选择 "`Add Library`" 最后选择 "`jme3-test-data`" 库。
 ====
 
 
@@ -42,8 +42,9 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Box;
 
-/** Sample 3 - how to load an OBJ model, and OgreXML model,
- * a material/texture, or text. */
+
+ /** 例子 3 - 如何加载OBJ模型和OgreXML模型，
+ * 材质/贴图，或文字 */
 public class HelloAssets extends SimpleApplication {
 
     public static void main(String[] args) {
@@ -60,7 +61,7 @@ public class HelloAssets extends SimpleApplication {
         teapot.setMaterial(mat_default);
         rootNode.attachChild(teapot);
 
-        // Create a wall with a simple texture from test_data
+        // 创建墙壁。墙壁使用了test_data里的一张贴图
         Box box = new Box(2.5f,2.5f,1.0f);
         Spatial wall = new Geometry("Box", box );
         Material mat_brick = new Material(
@@ -71,7 +72,7 @@ public class HelloAssets extends SimpleApplication {
         wall.setLocalTranslation(2.0f,-2.5f,0.0f);
         rootNode.attachChild(wall);
 
-        // Display a line of text with a default font
+        // 用默认字体显示一行文字
         guiNode.detachAllChildren();
         guiFont = assetManager.loadFont("Interface/Fonts/Default.fnt");
         BitmapText helloText = new BitmapText(guiFont, false);
@@ -80,7 +81,7 @@ public class HelloAssets extends SimpleApplication {
         helloText.setLocalTranslation(300, helloText.getLineHeight(), 0);
         guiNode.attachChild(helloText);
 
-        // Load a model from test_data (OgreXML + material + texture)
+        // 从test_data加载模型（OgreXML + 材质 + 贴图）
         Spatial ninja = assetManager.loadModel("Models/Ninja/Ninja.mesh.xml");
         ninja.scale(0.05f, 0.05f, 0.05f);
         ninja.rotate(0.0f, -3.0f, 0.0f);
@@ -95,7 +96,7 @@ public class HelloAssets extends SimpleApplication {
 }
 ----
 
-Build and run the code sample. You should see a green Ninja with a colorful teapot standing behind a wall. The text on the screen should say "`Hello World`".
+编译和运行示例代码。你应该看到绿色的忍者站在放着彩色茶壶的墙壁后。屏幕的文字应该是"`Hello World`"。
 
 
 == The Asset Manager
