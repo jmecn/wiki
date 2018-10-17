@@ -378,11 +378,11 @@ loadModel()函数现在可以直接找到要加载的zip文件 +
 如果你登记了新的locators，确保你不会有重复文件名：不要命名所有场景 `main.scene` ，而是给每个场景唯一的名字。
 ====
 
-Earlier in this tutorial, you loaded scenes and models from the asset directory. This is the most common way you will be loading scenes and models. Here is the typical procedure:
+更早的时候，在这教程，你从asset路径加载了场景和模型。这是最普遍的方式加载场景和模型。这是另一种方式：
 
-.  Remove the code that you added for the previous exercise.
-.  Move the unzipped `town/` directory into the `assets/Scenes/` directory of your project.
-.  Add the following code under `simpleInitApp()`.
+.  删掉之前测试里加的代码。
+.  把解压的 `town/` 路径放到项目里 `assets/Scenes/` 路径。
+.  在 `simpleInitApp` 添加以下代码。
 +
 [source,java]
 ----
@@ -392,18 +392,18 @@ Earlier in this tutorial, you loaded scenes and models from the asset directory.
     rootNode.attachChild(gameLevel);
 ----
 +
-Note that the path is relative to the `assets/…` directory.
+注意这里的路径是相对于 `assets/...` 路径的
 
-.  Clean, build and run the project. +
-Again, you should see the Ninja+wall+teapot standing in a town.
+.  编译和运行项目 +
+你将又一次看到忍者+墙壁+茶壶站在小镇上。
 
-Here is a third method you must know, loading a scene/model from a .j3o file:
+这是第三种方式，你必须知道的：从 .j3o 文件加载场景/模型：
 
-.  Remove the code from the previous exercise.
-.  If you haven't already, open the <<sdk#,SDK>> and open the project that contains the HelloAsset class.
-.  In the projects window, browse to the `assets/Scenes/town` directory.
-.  Right-click the `main.scene` and convert the scene to binary: The jMonkeyPlatform generates a main.j3o file.
-.  Add the following code under `simpleInitApp() {`
+.  删掉之前加的代码。
+.  打开 <<sdk#,SDK>> 然后打开HelloAsset的项目，如果你还没有这样做。
+.  在projects窗口，找到 `assets/Scenes/town` 路径。
+.  右键点击 `main.scene` 然后转换场景到二进制： jMonkeyPlatform 会生成 main.j3o 文件
+.  在 `simpleInitApp()` 函数添加以下代码 {`
 +
 [source,java]
 ----
@@ -413,23 +413,23 @@ Here is a third method you must know, loading a scene/model from a .j3o file:
     rootNode.attachChild(gameLevel);
 ----
 +
-Again, note that the path is relative to the `assets/…` directory.
+同样，注意这里的路径是相对于 `assets/...` 路径的
 
-.  Clean, Build and run the project. +
-Again, you should see the Ninja+wall+teapot standing in a town.
+.  编译和运行项目 +
+你将再一次看到忍者+墙壁+茶壶站在小镇上。
 
 
-== Conclusion
+== 总结
 
-Now you know how to populate the scenegraph with static shapes and models, and how to build scenes. You have learned how to load assets using the `assetManager` and you have seen that the paths start relative to your project directory. Another important thing you have learned is to convert models to .j3o format for the executable JARs etc.
+现在你知道如何添加形状和模型到场景图，和如何装换场景。你学会了如何通过 `assetManager` 加载加载资源和你发现了初始路径是项目的根目录。最后最重要的你知道了对于jar可执行文件，要转换模型到 .j3o 格式
 
-Let's add some action to the scene and continue with the <<jme3/beginner/hello_main_event_loop#,Update Loop>>!
+下一章节 <<jme3/beginner/hello_main_event_loop#,Update Loop>> ，我们将给场景添加动作
 
 '''
 
-*See also:*
+*了解更多:*
 
-*  <<jme3/external/blender#,The definitive Blender import tutorial>>
-*  <<jme3/intermediate/multi-media_asset_pipeline#,Asset pipeline introduction>>
-*  If you want to learn how to load sounds, see <<jme3/beginner/hello_audio#,Hello Audio>>
-*  If you want to learn more about loading textures and materials, see <<beginner/hello_material#,材质>>
+*  <<jme3/external/blender#,blender导入教程>>
+*  <<jme3/intermediate/multi-media_asset_pipeline#,资源管道介绍>>
+*  如果你想学习声音, 查看 <<jme3/beginner/hello_audio#,Hello Audio>>
+*  如果你想学习更多关于贴图和材质, 查看 <<beginner/hello_material#,材质>>
