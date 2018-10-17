@@ -233,25 +233,24 @@ Here is a usage example of a ZipLocator that is registered to a file `town.zip` 
 JME3提供ClasspathLocator，ZipLocator，FileLocator，HttpZipLocator和UrlLocator(详情见  `com.jme3.asset.plugins`）。
 
 
-== Creating Models and Scenes
+== 创造模型和场景
 
-To create 3D models and scenes, you need a 3D Mesh Editor. If you don't have any tools, install Blender and the OgreXML Exporter plugin.
-Then you link:http://en.wikibooks.org/wiki/Blender_3D:_Noob_to_Pro/UV_Map_Basics[create fully textured models (e.g. with Blender)] and export them to your project.
-Then you use the <<sdk#,SDK>> to <<sdk/model_loader_and_viewer#,load models>>, <<sdk/blender#,convert models>>, and <<sdk/scene_composer#,create 3D scenes>> from them.
+要创造模型和场景，首先需要有3d网格编辑器(建模软件)。如果没有这些工具，推荐使用Blender然后安装上OgreXML Exporter插件(译者(wchen)：如果使用JME SDK的话是可以直接导入blender格式的模型，就不需要安装插件了)。 然后 link:http://en.wikibooks.org/wiki/Blender_3D:_Noob_to_Pro/UV_Map_Basics[创造带贴图的模型 (比如用Blender)] 和导出到项目里。
+然后使用 <<sdk#,SDK>> 点击 <<sdk/model_loader_and_viewer#,load models>>, <<sdk/blender#,convert models>>, 和 <<sdk/scene_composer#,create 3D scenes>> 。
 
-See <<jme3/advanced/3d_models#creating-models-and-scenes#,creating models and scenes>> for an example on how to export your models as Ogre XML meshes with materials.
+详情了解 <<jme3/advanced/3d_models#creating-models-and-scenes#,创造模型和场景>> 作为例子关于导出模型到带材质的Ogre XML格式。
 
 
-=== Model File Formats
+=== 模型文件格式
 
-JME3 can convert and load
+JME3 可以转换和导入
 
-*  Ogre XML models + materials.
+*  Ogre XML 模型 + 材质.
 *  Ogre DotScenes.
-*  Wavefront OBJ + MTL models.
-*  .Blend files.
+*  Wavefront OBJ + MTL 模型.
+*  .Blend 文件.
 
-The `loadModel()` method loads these original file formats when you run your code directly from the SDK. If you however build the executables using the default build script, then the original model files (XML, OBJ, etc) _are not included_. This means, when you run the executable outside the SDK, and load any original models directly, you get the following error message:
+当你直接在SDK运行代码， `loadModel()` 可以加载这些文件格式。如果你用默认build script编译成可执行文件，这些原文件（XML, OBJ, 等）_是不被包含的_ 。所以，当你在SDK外运行，然后直接导入这些模型，你会得到以下报错：
 
 [source]
 ----
@@ -263,15 +262,15 @@ java.lang.NullPointerException
 
 ----
 
-You see that loading the *XML/OBJ/Blend files* directly is only acceptable during the development phase in the SDK. For example, every time your graphic designer pushes updated files to the asset directory, you can quickly review the latest version in your development environment.
+可以发现直接加载 *XML/OBJ/Blend 文件* ，只有在SDK开发阶段可以。比如，每次你的美术设计师更新文件到asset路径，你可以很快得在开发环境中查看最新版本。
 
-But for QA test builds and for the final release build, you use *.j3o files* exclusively. J3o is an optimized binary format for jME3 applications. When you do QA test builds, or are ready to release, use the <<sdk#,SDK>> to <<sdk/model_loader_and_viewer#,convert>> all .obj/.scene/.xml/.blend files to .j3o files, and update all code to load the .j3o files. The default build script automatically packages .j3o files in the executables.
+但是对于QA(质量保证)测试和最终版本，应该只使用 *.j3o 文件* 。 J3o是针对JME3应用优化的二进制格式。当你做QA测试或最终版本，使用 <<sdk#,SDK>> 来 <<sdk/model_loader_and_viewer#,转换>> 所有 .obj/.scene/.xml/.blend 文件到 .j3o 文件，然后更新所有代码到加载 .j3o 文件。默认build script自动打包 .j3o 文件到可执行文件。
 
-Open your JME3 Project in the jMonkeyEngine SDK.
+在jMonkeyEngine SDK打开你的JME3xiangmu。
 
-.  Right-click a .Blend, .OBJ, or .mesh.xml file in the Projects window, and choose "`Convert to j3o Binary`".
-.  The .j3o file appears next to the .mesh.xml file and has the same name.
-.  Update all your `loadModel()` lines accordingly. For example:
+.  在Projects窗口，右键点击 .Blend, .OBJ, or .mesh.xml 文件，然后选择"`Convert to j3o Binary`"。
+.  .j3o文件会用同样的名字生成在 .mesh .xml 文件旁。
+.  更新所有你的 `loadModel()` 代码， 比如：
 +
 [source,java]
 ----
@@ -281,7 +280,7 @@ Spatial ninja = assetManager.loadModel("Models/Ninja/Ninja.j3o");
 
 [TIP]
 ====
-If your executable throws a "`Cannot locate resource`" runtime exception, check all load paths and make sure you have converted all models to .j3o files!
+如果你的可执行程序throws "`Cannot locate resource`" runtime exception(运行异常)，检查所有的加载路径和确保转换所有的模型到.j3o文件！
 ====
 
 
