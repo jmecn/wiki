@@ -284,15 +284,15 @@ Spatial ninja = assetManager.loadModel("Models/Ninja/Ninja.j3o");
 ====
 
 
-=== Loading Models and Scenes
+=== 加载模型和场景
 [cols="15,85", options="header"]
 |===
 
-a| Task?
-a| Solution!
+a| 问题?
+a| 解决方法!
 
-a| Load model W/ materials.
-a| Use the asset manager's `loadModel()` method and attach the Spatial to the rootNode.
+a| 加载模型 W/ 材质.
+a| 用 asset manager 的 `loadModel()` 函数然后绑定空间体到rootNode
 
 [source,java]
 ----
@@ -306,19 +306,19 @@ Spatial elephant = assetManager.loadModel("Models/Elephant/Elephant.j3o");
 rootNode.attachChild(elephant);
 ----
 
-a| Load model W/O materials.
-a| If you have a model without materials, you have to give it a material to make it visible.
+a| 加载模型 W/O 材质.
+a| 如果你的模型没有材质，你需要给它材质来让它可见
 
 [source,java]
 ----
 Spatial teapot = assetManager.loadModel("Models/Teapot/Teapot.j3o");
-Material mat = new Material(assetManager, "Common/MatDefs/Misc/ShowNormals.j3md"); // default material
+Material mat = new Material(assetManager, "Common/MatDefs/Misc/ShowNormals.j3md"); // 默认材质
 teapot.setMaterial(mat);
 rootNode.attachChild(teapot);
 ----
 
-a| Load a scene.
-a| You load scenes just like you load models:
+a| 加载一个场景
+a| 加载场景跟加载模型一样
 
 [source,java]
 ----
@@ -334,13 +334,13 @@ rootNode.attachChild(scene);
 |===
 
 
-== Excercise - How to Load Assets
+== 小测试 - 如何加载资源
 
-As an exercise, let's try different ways of loading a scene. You will learn how to load the scene directly, or from a zip file.
+作为测试，让我们尝试用不同方式加载场景。你会学到如何直接加载场景或从zip文件加载。
 
-.  link:https://github.com/jMonkeyEngine/wiki/raw/master/src/docs/resources/Scenes/Town/town.zip[Download the town.zip] sample scene.
-.  (Optional:) Unzip the town.zip to see the structure of the contained Ogre dotScene: You'll get a directory named `town`. It contains XML and texture files, and file called main.scene. (This is just for your information, you do not need to do anything with it.)
-.  Place the town.zip file in the top level directory of your JME3 project, like so:
+.  link:https://github.com/jMonkeyEngine/wiki/raw/master/src/docs/resources/Scenes/Town/town.zip[下载town.zip] 实例场景.
+.  (可选：)解压town.zip可以看到Ogre dotScene的格式：你会看到路径名叫 `town` 。它包含 XML， 贴图，和main.scene 文件。 (这只是附加信息，你不需要对它作什么。)
+.  把twon.zip放到项目根目录，类似以下：
 +
 [source]
 ----
@@ -353,10 +353,10 @@ jMonkeyProjects/MyGameProject/town.zip
 ----
 +
 
-Use the following method to load models from a zip file:
+用以下函数从zip文件加载模型：
 
-.  Verify `town.zip` is in the project directory.
-.  Register a zip file locator to the project directory: Add the following code under `simpleInitApp()`.
+.  确定 `town.zip` 在项目根目录。
+.  登记zip file locator到项目根目录： 在 `simpleInitApp()` 函数添加以下代码。
 +
 [source,java]
 ----
@@ -367,15 +367,15 @@ Use the following method to load models from a zip file:
     rootNode.attachChild(gameLevel);
 ----
 +
-The loadModel() method now searches this zip directly for the files to load. +
-(This means, do not write `loadModel(town.zip/main.scene)` or similar!)
+loadModel()函数现在可以直接找到要加载的zip文件 +
+(也就是说，不要写`loadModel(town.zip/main.scene)` 之类的！)
 
-.  Clean, build and run the project. +
-You should now see the Ninja+wall+teapot standing in a town.
+.  编译然后运行项目 +
+你应该看到忍者+墙壁+茶壶”站在”小镇上。
 
 [TIP]
 ====
-If you register new locators, make sure you do not get any file name conflicts: Don't name all scenes `main.scene` but give each scene a unique name.
+如果你登记了新的locators，确保你不会有重复文件名：不要命名所有场景 `main.scene` ，而是给每个场景唯一的名字。
 ====
 
 Earlier in this tutorial, you loaded scenes and models from the asset directory. This is the most common way you will be loading scenes and models. Here is the typical procedure:
