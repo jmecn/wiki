@@ -1,10 +1,10 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.4"><meta name="author" content="(翻译 jmecn)"><meta name="keywords" content="beginner, intro, documentation, lightnode, material, model, node, gui, hud, texture"><title>jMonkeyEngine 3 教程 (3) - 加载资产</title><link rel="stylesheet" href="./asciidoctor.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="./coderay-asciidoctor.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css"></head><body class="article toc2 toc-left"><div id="header"><div id="toolbar"><a href="https://github.com/jmecn/wiki/edit/master/src/docs/asciidoc/beginner/hello_asset.adoc"><i class="fa fa-pencil-square" aria-hidden="true"></i></a><a href="https://github.com/jmecn/wiki/new/master/src/docs/asciidoc/beginner/"><i class="fa fa-plus-square" aria-hidden="true"></i></a><input dir="auto" style="position: relative; vertical-align: top;" spellcheck="false" autocomplete="off" class="searchbox__input aa-input" id="doc-search" name="search" placeholder="Search in the doc" required="required" type="search"></div><h1>jMonkeyEngine 3 教程 (3) - 加载资产</h1><div class="details"><span class="author" id="author">(翻译 jmecn)</span><br><span id="revnumber">version ,</span> <span id="revdate">2018/01/22 16:09</span></div><div id="toc" class="toc2"><div id="toctitle">Table of Contents</div><ul class="sectlevel1"><li><a href="#code-sample">Code Sample</a></li><li><a href="#the-asset-manager">The Asset Manager</a><ul class="sectlevel2"><li><a href="#loading-textures">Loading Textures</a></li><li><a href="#loading-text-and-fonts">Loading Text and Fonts</a></li><li><a href="#loading-a-model">Loading a Model</a></li><li><a href="#loading-assets-from-custom-paths">Loading Assets From Custom Paths</a></li></ul></li><li><a href="#creating-models-and-scenes">Creating Models and Scenes</a><ul class="sectlevel2"><li><a href="#model-file-formats">Model File Formats</a></li><li><a href="#loading-models-and-scenes">Loading Models and Scenes</a></li></ul></li><li><a href="#excercise-how-to-load-assets">Excercise - How to Load Assets</a></li><li><a href="#conclusion">Conclusion</a></li></ul></div></div><div id="content"><div id="preamble"><div class="sectionbody"><div class="paragraph"><p>上一篇: <a href="../beginner/hello_node.html">节点</a>,
+<link rel="stylesheet" href="./coderay-asciidoctor.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css"></head><body class="article toc2 toc-left"><div id="header"><div id="toolbar"><a href="https://github.com/jmecn/wiki/edit/master/src/docs/asciidoc/beginner/hello_asset.adoc"><i class="fa fa-pencil-square" aria-hidden="true"></i></a><a href="https://github.com/jmecn/wiki/new/master/src/docs/asciidoc/beginner/"><i class="fa fa-plus-square" aria-hidden="true"></i></a><input dir="auto" style="position: relative; vertical-align: top;" spellcheck="false" autocomplete="off" class="searchbox__input aa-input" id="doc-search" name="search" placeholder="Search in the doc" required="required" type="search"></div><h1>jMonkeyEngine 3 教程 (3) - 加载资产</h1><div class="details"><span class="author" id="author">(翻译 jmecn)</span><br><span id="revnumber">version ,</span> <span id="revdate">2018/01/22 16:09</span></div><div id="toc" class="toc2"><div id="toctitle">Table of Contents</div><ul class="sectlevel1"><li><a href="#code-sample">Code Sample</a></li><li><a href="#资源管理器-the-asset-manager">资源管理器(The Asset Manager)</a><ul class="sectlevel2"><li><a href="#加载贴图">加载贴图</a></li><li><a href="#加载文字和字体">加载文字和字体</a></li><li><a href="#加载模型">加载模型</a></li><li><a href="#从自定义路径加载资源">从自定义路径加载资源</a></li></ul></li><li><a href="#创造模型和场景">创造模型和场景</a><ul class="sectlevel2"><li><a href="#模型文件格式">模型文件格式</a></li><li><a href="#加载模型和场景">加载模型和场景</a></li></ul></li><li><a href="#小测试-如何加载资源">小测试 - 如何加载资源</a></li><li><a href="#总结">总结</a></li></ul></div></div><div id="content"><div id="preamble"><div class="sectionbody"><div class="paragraph"><p>上一篇: <a href="../beginner/hello_node.html">节点</a>,
 下一篇: <a href="../beginner/hello_main_event_loop.html">主循环</a></p></div>
-<div class="paragraph"><p>In this tutorial we will learn to load 3D models and text into the scene graph, using the jME <a href="../jme3/advanced/asset_manager.html">Asset Manager</a>. You will also learn how to determine the correct paths, and which file formats to use.</p></div>
+<div class="paragraph"><p>在这篇教程里，我们来学习使用 <a href="../jme3/advanced/asset_manager.html">Asset Manager</a> 加载3d模型和文字到场景图，还会学习如何确定路径和文件格式。</p></div>
 <div style="text-align: center;" class="imageblock"><div class="content"><img src="../beginner/beginner-assets-models.png" alt="beginner-assets-models.png" width="320" height="250"></div></div>
-<div class="admonitionblock tip"><table><tr><td class="icon"><i class="fa icon-tip" title="Tip"></i></td><td class="content"><div class="paragraph"><p><a href="../sdk/sample_code.html">Trouble finding the files to run this sample?</a> To get the assets (3D models) used in this example, add the included <code>jME3-testdata.jar</code> to your classpath. In project created with the jMonkeyEngine SDK (recommended), simply right-click your project, choose &#8220;Properties&#8221;, go to &#8220;Libraries&#8221;, press &#8220;Add Library&#8221; and add the preconfigured &#8220;jme3-test-data&#8221; library.</p></div></td></tr></table></div></div></div>
+<div class="admonitionblock tip"><table><tr><td class="icon"><i class="fa icon-tip" title="Tip"></i></td><td class="content"><div class="paragraph"><p><a href="../sdk/sample_code.html">找不到运行需要的文件?</a> 要想获得这个教程里的游戏资源（3d模型），添加 <code>jME3-testdata.jar</code> 到你的classpath。在jMonkeyEngine SDK（推荐）里创建的项目，右键点击你的项目，选择"`Properties`", 然后选择 &#8220;Libraries&#8221;, 然后选择 &#8220;Add Library&#8221; 最后选择 &#8220;jme3-test-data&#8221; 库。</p></div></td></tr></table></div></div></div>
 <div class="sect1"><h2 id="code-sample">Code Sample</h2><div class="sectionbody"><div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">jme3test.helloworld</span>;
 
 <span class="keyword">import</span> <span class="include">com.jme3.app.SimpleApplication</span>;
@@ -16,8 +16,9 @@
 <span class="keyword">import</span> <span class="include">com.jme3.scene.Spatial</span>;
 <span class="keyword">import</span> <span class="include">com.jme3.scene.shape.Box</span>;
 
-<span class="comment">/** Sample 3 - how to load an OBJ model, and OgreXML model,
- * a material/texture, or text. */</span>
+
+ <span class="comment">/** 例子 3 - 如何加载OBJ模型和OgreXML模型，
+ * 材质/贴图，或文字 */</span>
 <span class="directive">public</span> <span class="type">class</span> <span class="class">HelloAssets</span> <span class="directive">extends</span> SimpleApplication {
 
     <span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> main(<span class="predefined-type">String</span><span class="type">[]</span> args) {
@@ -34,7 +35,7 @@
         teapot.setMaterial(mat_default);
         rootNode.attachChild(teapot);
 
-        <span class="comment">// Create a wall with a simple texture from test_data</span>
+        <span class="comment">// 创建墙壁。墙壁使用了test_data里的一张贴图</span>
         <span class="predefined-type">Box</span> box = <span class="keyword">new</span> <span class="predefined-type">Box</span>(<span class="float">2.5f</span>,<span class="float">2.5f</span>,<span class="float">1.0f</span>);
         Spatial wall = <span class="keyword">new</span> Geometry(<span class="string"><span class="delimiter">&quot;</span><span class="content">Box</span><span class="delimiter">&quot;</span></span>, box );
         Material mat_brick = <span class="keyword">new</span> Material(
@@ -45,7 +46,7 @@
         wall.setLocalTranslation(<span class="float">2.0f</span>,-<span class="float">2.5f</span>,<span class="float">0.0f</span>);
         rootNode.attachChild(wall);
 
-        <span class="comment">// Display a line of text with a default font</span>
+        <span class="comment">// 用默认字体显示一行文字</span>
         guiNode.detachAllChildren();
         guiFont = assetManager.loadFont(<span class="string"><span class="delimiter">&quot;</span><span class="content">Interface/Fonts/Default.fnt</span><span class="delimiter">&quot;</span></span>);
         BitmapText helloText = <span class="keyword">new</span> BitmapText(guiFont, <span class="predefined-constant">false</span>);
@@ -54,7 +55,7 @@
         helloText.setLocalTranslation(<span class="integer">300</span>, helloText.getLineHeight(), <span class="integer">0</span>);
         guiNode.attachChild(helloText);
 
-        <span class="comment">// Load a model from test_data (OgreXML + material + texture)</span>
+        <span class="comment">// 从test_data加载模型（OgreXML + 材质 + 贴图）</span>
         Spatial ninja = assetManager.loadModel(<span class="string"><span class="delimiter">&quot;</span><span class="content">Models/Ninja/Ninja.mesh.xml</span><span class="delimiter">&quot;</span></span>);
         ninja.scale(<span class="float">0.05f</span>, <span class="float">0.05f</span>, <span class="float">0.05f</span>);
         ninja.rotate(<span class="float">0.0f</span>, -<span class="float">3.0f</span>, <span class="float">0.0f</span>);
@@ -67,26 +68,26 @@
 
     }
 }</code></pre></div></div>
-<div class="paragraph"><p>Build and run the code sample. You should see a green Ninja with a colorful teapot standing behind a wall. The text on the screen should say &#8220;Hello World&#8221;.</p></div></div></div>
-<div class="sect2"><h3 id="the-asset-manager">The Asset Manager</h3><div class="paragraph"><p><strong>By game assets we mean all multi-media files, such as models, materials, textures, whole scenes, custom shaders, music and sound files, and custom fonts.</strong> JME3 comes with a handy AssetManager object that helps you access your assets.
-The AssetManager can load files from:</p></div>
-<div class="ulist"><ul><li><p>The current classpath (the top level of your project directory).</p></li><li><p>The <code>assets</code> directory of your project.</p></li><li><p>Optionally, custom paths that you register.</p></li></ul></div>
-<div class="paragraph"><p>The following is the recommended directory structure for storing assets in your project directoy:</p></div>
-<div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code>MyGame/assets/
+<div class="paragraph"><p>编译和运行示例代码。你应该看到绿色的忍者站在放着彩色茶壶的墙壁后。屏幕的文字应该是"`Hello World`"。</p></div></div></div>
+<div class="sect2"><h3 id="资源管理器-the-asset-manager">资源管理器(The Asset Manager)</h3><div class="paragraph"><p>*游戏资源指的是多媒体文件，比如模型，材质，贴图，场景，shaders，音乐音频文件和字体。*JME3自带资源管理器(AssetManager)来帮助你使用资源。
+资源管理器可以从这些路径获取资源：</p></div>
+<div class="ulist"><ul><li><p>当前所在路径(项目的根目录)</p></li><li><p><code>assets</code> 所在的路径</p></li><li><p>可选，自定义路径</p></li></ul></div>
+<div class="paragraph"><p>以下是推荐的项目目录结构：</p></div>
+<div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code>我的游戏(MyGame)/assets/
 MyGame/assets/Interface/
 MyGame/assets/MatDefs/
 MyGame/assets/Materials/
-MyGame/assets/Models/       &lt;-- your .j3o models go here
+MyGame/assets/Models/       &lt;--  .j3o 模型文件
 MyGame/assets/Scenes/
 MyGame/assets/Shaders/
-MyGame/assets/Sounds/       &lt;-- your audio files go here
-MyGame/assets/Textures/     &lt;-- your textures go here
-MyGame/build.xml            &lt;-- Default Ant build script
-MyGame/src/...              &lt;-- your Java sources go here
+MyGame/assets/Sounds/       &lt;-- 音频文件
+MyGame/assets/Textures/     &lt;-- 贴图
+MyGame/build.xml            &lt;-- Ant build script
+MyGame/src/...              &lt;-- java源代码
 MyGame/...</code></pre></div></div>
-<div class="paragraph"><p>This is just a suggested best practice, and it&#8217;s what you get by default when creating a new Java project in the jMokeyEngine <a href="../sdk.html">SDK</a>. You can create an <code>assets</code> directory and technically name the subdirectories whatever you like.</p></div>
-<div class="sect2"><h3 id="loading-textures">Loading Textures</h3><div class="paragraph"><p>Place your textures in a subdirectory of <code>assets/Textures/</code>. Load the texture into the material before you set the Material. The following code sample is from the <code>simpleInitApp()</code> method and loads a simple wall model:</p></div>
-<div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// Create a wall with a simple texture from test_data</span>
+<div class="paragraph"><p>这只是推荐，也是你在jMonkeyEngine<a href="../sdk.html">SDK</a>创建新项目后默认的结构。你可以创建 <code>assets</code> 目录然后对子目录命名想要的目录名。</p></div>
+<div class="sect2"><h3 id="加载贴图">加载贴图</h3><div class="paragraph"><p>把贴图放到 <code>assets/Textures/</code> 目录里。在给空间体设定材质前加载贴图。以下实例代码放在 <code>simpleInitApp()</code> 函数里。它加载一个简单的墙壁模型：</p></div>
+<div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// 用test_data库里的贴图创建一面墙壁</span>
 <span class="predefined-type">Box</span> box = <span class="keyword">new</span> <span class="predefined-type">Box</span>(<span class="float">2.5f</span>,<span class="float">2.5f</span>,<span class="float">1.0f</span>);
 Spatial wall = <span class="keyword">new</span> Geometry(<span class="string"><span class="delimiter">&quot;</span><span class="content">Box</span><span class="delimiter">&quot;</span></span>, box );
 Material mat_brick = <span class="keyword">new</span> Material(
@@ -97,9 +98,9 @@ wall.setMaterial(mat_brick);
 wall.setLocalTranslation(<span class="float">2.0f</span>,-<span class="float">2.5f</span>,<span class="float">0.0f</span>);
 rootNode.attachChild(wall);</code></pre></div></div>
 <div class="paragraph"><p>在这个案例中，你<a href="../beginner/hello_material.html">创建了自己的材质</a>并将其应用到一个Geometry上。如上例所示，该材质基于默认的材质描述文件(诸如 &#8220;Unshaded.j3md&#8221;)而创建。</p></div></div>
-<div class="sect2"><h3 id="loading-text-and-fonts">Loading Text and Fonts</h3><div class="paragraph"><p>This example displays the text &#8220;Hello World&#8221; in the default font at the bottom edge of the window. You attach text to the <code>guiNode</code> – this is a special node for flat (orthogonal) display elements. You display text to show the game score, player health, etc.
-The following code sample goes into the <code>simpleInitApp()</code> method.</p></div>
-<div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// Display a line of text with a default font</span>
+<div class="sect2"><h3 id="加载文字和字体">加载文字和字体</h3><div class="paragraph"><p>这个实例会在窗口底部显示默认字体的 &#8220;Hello World&#8221; 文字。把文字绑定到 <code>guiNode</code> - 这是一个特别的节点，它以平面(正交)的形式来显示个体。比如，文字来显示游戏得分，生命值等。
+以下代码放在 <code>simpleInitApp()</code> 函数里。</p></div>
+<div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// 用默认字体显示一行文字</span>
 guiNode.detachAllChildren();
 guiFont = assetManager.loadFont(<span class="string"><span class="delimiter">&quot;</span><span class="content">Interface/Fonts/Default.fnt</span><span class="delimiter">&quot;</span></span>);
 BitmapText helloText = <span class="keyword">new</span> BitmapText(guiFont, <span class="predefined-constant">false</span>);
@@ -107,9 +108,10 @@ helloText.setSize(guiFont.getCharSet().getRenderedSize());
 helloText.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>);
 helloText.setLocalTranslation(<span class="integer">300</span>, helloText.getLineHeight(), <span class="integer">0</span>);
 guiNode.attachChild(helloText);</code></pre></div></div>
-<div class="admonitionblock tip"><table><tr><td class="icon"><i class="fa icon-tip" title="Tip"></i></td><td class="content"><div class="paragraph"><p>Clear existing text in the guiNode by detaching all its children.</p></div></td></tr></table></div></div>
-<div class="sect2"><h3 id="loading-a-model">Loading a Model</h3><div class="paragraph"><p>Export your 3D model in OgreXML format (.mesh.xml, .scene, .material, .skeleton.xml) and place it in a subdirectory of <code>assets/Models/</code>. The following code sample goes into the <code>simpleInitApp()</code> method.</p></div>
-<div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// Load a model from test_data (OgreXML + material + texture)</span>
+<div class="admonitionblock tip"><table><tr><td class="icon"><i class="fa icon-tip" title="Tip"></i></td><td class="content"><div class="paragraph"><p>通过给guiNode上的所有个体解除绑定来取消现有文字的显示。</p></div></td></tr></table></div></div>
+<div class="sect2"><h3 id="加载模型">加载模型</h3><div class="paragraph"><p>导出3d模型到OgreXML格式 (.mesh.xml, .scene, .material, .skeleton.xml) 然后把它们放到 <code>assets/Models/</code> 目录里。
+以下代码放在 <code>simpleInitApp()</code> 函数里。</p></div>
+<div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// 从test_data库加载一个模型(OgreXML + 材质 + 贴图)</span>
 Spatial ninja = assetManager.loadModel(<span class="string"><span class="delimiter">&quot;</span><span class="content">Models/Ninja/Ninja.mesh.xml</span><span class="delimiter">&quot;</span></span>);
 ninja.scale(<span class="float">0.05f</span>, <span class="float">0.05f</span>, <span class="float">0.05f</span>);
 ninja.rotate(<span class="float">0.0f</span>, -<span class="float">3.0f</span>, <span class="float">0.0f</span>);
@@ -119,83 +121,83 @@ rootNode.attachChild(ninja);
 DirectionalLight sun = <span class="keyword">new</span> DirectionalLight();
 sun.setDirection(<span class="keyword">new</span> Vector3f(-<span class="float">0.1f</span>, -<span class="float">0.7f</span>, -<span class="float">1.0f</span>).normalizeLocal());
 rootNode.addLight(sun);</code></pre></div></div>
-<div class="admonitionblock note"><table><tr><td class="icon"><i class="fa icon-note" title="Note"></i></td><td class="content">You do not need to create a Material if you exported the model with a material. Remember to add a light source, as shown, otherwise the material (and the whole model) is not visible!</td></tr></table></div></div>
-<div class="sect2"><h3 id="loading-assets-from-custom-paths">Loading Assets From Custom Paths</h3><div class="paragraph"><p>What if your game relies on user supplied model files, that are not included in the distribution? If a file is not located in the default location (e.g. assets directory), you can register a custom Locator and load it from any path.</p></div>
-<div class="paragraph"><p>Here is a usage example of a ZipLocator that is registered to a file <code>town.zip</code> in the top level of your project directory:</p></div>
+<div class="admonitionblock note"><table><tr><td class="icon"><i class="fa icon-note" title="Note"></i></td><td class="content">如果导出的模型带有材质，你不需要再创建材质。记得加上光源，不然会看不见材质(整个模型)</td></tr></table></div></div>
+<div class="sect2"><h3 id="从自定义路径加载资源">从自定义路径加载资源</h3><div class="paragraph"><p>如果你的游戏依赖于用户提供模型文件。这些文件不在发布的文件里。该怎么办呢？如果文件不在默认目录(比如， assets 目录)，你可以登记一个自定义Locator然后从任何目录加载。</p></div>
+<div class="paragraph"><p>Here is a usage example of a ZipLocator that is registered to a file <code>town.zip</code> in the top level of your project directory:
+以下例子使用了ipLocator。它登记了项目根目录的 <code>town.zip</code> 文件。</p></div>
 <div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java">    assetManager.registerLocator(<span class="string"><span class="delimiter">&quot;</span><span class="content">town.zip</span><span class="delimiter">&quot;</span></span>, ZipLocator.class);
     Spatial scene = assetManager.loadModel(<span class="string"><span class="delimiter">&quot;</span><span class="content">main.scene</span><span class="delimiter">&quot;</span></span>);
     rootNode.attachChild(scene);</code></pre></div></div>
-<div class="paragraph"><p>Here is a HttpZipLocator that can download zipped models and load them:</p></div>
+<div class="paragraph"><p>以下例子是HttpZipLocator。它可以通过网络下载zip压缩的模型然后加载它们。</p></div>
 <div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java">    assetManager.registerLocator(<span class="string"><span class="delimiter">&quot;</span><span class="content">https://storage.googleapis.com/</span><span class="delimiter">&quot;</span></span>
 <span class="error"> </span><span class="error"> </span><span class="error"> </span><span class="error"> </span>    <span class="error"> </span><span class="error"> </span><span class="error"> </span> + <span class="string"><span class="delimiter">&quot;</span><span class="content">google-code-archive-downloads/v2/code.google.com/</span><span class="delimiter">&quot;</span></span>
 <span class="error"> </span><span class="error"> </span><span class="error"> </span><span class="error"> </span><span class="error"> </span><span class="error"> </span><span class="error"> </span>     + <span class="string"><span class="delimiter">&quot;</span><span class="content">jmonkeyengine/wildhouse.zip</span><span class="delimiter">&quot;</span></span>, HttpZipLocator.class);
     Spatial scene = assetManager.loadModel(<span class="string"><span class="delimiter">&quot;</span><span class="content">main.scene</span><span class="delimiter">&quot;</span></span>);
     rootNode.attachChild(scene);</code></pre></div></div>
-<div class="paragraph"><p>JME3 offers ClasspathLocator, ZipLocator, FileLocator, HttpZipLocator, and UrlLocator (see <code>com.jme3.asset.plugins</code>).</p></div></div></div>
-<div class="sect2"><h3 id="creating-models-and-scenes">Creating Models and Scenes</h3><div class="paragraph"><p>To create 3D models and scenes, you need a 3D Mesh Editor. If you don&#8217;t have any tools, install Blender and the OgreXML Exporter plugin.
-Then you <a href="http://en.wikibooks.org/wiki/Blender_3D:_Noob_to_Pro/UV_Map_Basics">create fully textured models (e.g. with Blender)</a> and export them to your project.
-Then you use the <a href="../sdk.html">SDK</a> to <a href="../sdk/model_loader_and_viewer.html">load models</a>, <a href="../sdk/blender.html">convert models</a>, and <a href="../sdk/scene_composer.html">create 3D scenes</a> from them.</p></div>
-<div class="paragraph"><p>See <a href="../jme3/advanced/3d_models.html#creating-models-and-scenes">creating models and scenes</a> for an example on how to export your models as Ogre XML meshes with materials.</p></div>
-<div class="sect2"><h3 id="model-file-formats">Model File Formats</h3><div class="paragraph"><p>JME3 can convert and load</p></div>
-<div class="ulist"><ul><li><p>Ogre XML models + materials.</p></li><li><p>Ogre DotScenes.</p></li><li><p>Wavefront OBJ + MTL models.</p></li><li><p>.Blend files.</p></li></ul></div>
-<div class="paragraph"><p>The <code>loadModel()</code> method loads these original file formats when you run your code directly from the SDK. If you however build the executables using the default build script, then the original model files (XML, OBJ, etc) <em>are not included</em>. This means, when you run the executable outside the SDK, and load any original models directly, you get the following error message:</p></div>
+<div class="paragraph"><p>JME3提供ClasspathLocator，ZipLocator，FileLocator，HttpZipLocator和UrlLocator(详情见  <code>com.jme3.asset.plugins</code>）。</p></div></div></div>
+<div class="sect2"><h3 id="创造模型和场景">创造模型和场景</h3><div class="paragraph"><p>要创造模型和场景，首先需要有3d网格编辑器(建模软件)。如果没有这些工具，推荐使用Blender然后安装上OgreXML Exporter插件(译者(wchen)：如果使用JME SDK的话是可以直接导入blender格式的模型，就不需要安装插件了)。 然后 <a href="http://en.wikibooks.org/wiki/Blender_3D:_Noob_to_Pro/UV_Map_Basics">创造带贴图的模型 (比如用Blender)</a> 和导出到项目里。
+然后使用 <a href="../sdk.html">SDK</a> 点击 <a href="../sdk/model_loader_and_viewer.html">load models</a>, <a href="../sdk/blender.html">convert models</a>, 和 <a href="../sdk/scene_composer.html">create 3D scenes</a> 。</p></div>
+<div class="paragraph"><p>详情了解 <a href="../jme3/advanced/3d_models.html#creating-models-and-scenes">创造模型和场景</a> 作为例子关于导出模型到带材质的Ogre XML格式。</p></div>
+<div class="sect2"><h3 id="模型文件格式">模型文件格式</h3><div class="paragraph"><p>JME3 可以转换和导入</p></div>
+<div class="ulist"><ul><li><p>Ogre XML 模型 + 材质.</p></li><li><p>Ogre DotScenes.</p></li><li><p>Wavefront OBJ + MTL 模型.</p></li><li><p>.Blend 文件.</p></li></ul></div>
+<div class="paragraph"><p>当你直接在SDK运行代码， <code>loadModel()</code> 可以加载这些文件格式。如果你用默认build script编译成可执行文件，这些原文件（XML, OBJ, 等）<em>是不被包含的</em> 。所以，当你在SDK外运行，然后直接导入这些模型，你会得到以下报错：</p></div>
 <div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code>com.jme3.asset.DesktopAssetManager loadAsset
 WARNING: Cannot locate resource: Models/Ninja/Ninja.mesh.xml
 com.jme3.app.Application handleError
 SEVERE: Uncaught exception thrown in Thread[LWJGL Renderer Thread,5,main]
 java.lang.NullPointerException</code></pre></div></div>
-<div class="paragraph"><p>You see that loading the <strong>XML/OBJ/Blend files</strong> directly is only acceptable during the development phase in the SDK. For example, every time your graphic designer pushes updated files to the asset directory, you can quickly review the latest version in your development environment.</p></div>
-<div class="paragraph"><p>But for QA test builds and for the final release build, you use <strong>.j3o files</strong> exclusively. J3o is an optimized binary format for jME3 applications. When you do QA test builds, or are ready to release, use the <a href="../sdk.html">SDK</a> to <a href="../sdk/model_loader_and_viewer.html">convert</a> all .obj/.scene/.xml/.blend files to .j3o files, and update all code to load the .j3o files. The default build script automatically packages .j3o files in the executables.</p></div>
-<div class="paragraph"><p>Open your JME3 Project in the jMonkeyEngine SDK.</p></div>
-<div class="olist arabic"><ol class="arabic"><li><p>Right-click a .Blend, .OBJ, or .mesh.xml file in the Projects window, and choose &#8220;Convert to j3o Binary&#8221;.</p></li><li><p>The .j3o file appears next to the .mesh.xml file and has the same name.</p></li><li><p>Update all your <code>loadModel()</code> lines accordingly. For example:</p><div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java">Spatial ninja = assetManager.loadModel(<span class="string"><span class="delimiter">&quot;</span><span class="content">Models/Ninja/Ninja.j3o</span><span class="delimiter">&quot;</span></span>);</code></pre></div></div></li></ol></div>
-<div class="admonitionblock tip"><table><tr><td class="icon"><i class="fa icon-tip" title="Tip"></i></td><td class="content"><div class="paragraph"><p>If your executable throws a &#8220;Cannot locate resource&#8221; runtime exception, check all load paths and make sure you have converted all models to .j3o files!</p></div></td></tr></table></div></div>
-<div class="sect2"><h3 id="loading-models-and-scenes">Loading Models and Scenes</h3><table class="tableblock frame-all grid-all spread"><colgroup><col style="width: 15%;"><col style="width: 85%;"></colgroup><thead><tr><th class="tableblock halign-left valign-top">Task?</th><th class="tableblock halign-left valign-top">Solution!</th></tr></thead><tbody><tr><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p>Load model W/ materials.</p></div></div></td><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p>Use the asset manager&#8217;s <code>loadModel()</code> method and attach the Spatial to the rootNode.</p></div>
+<div class="paragraph"><p>可以发现直接加载 <strong>XML/OBJ/Blend 文件</strong> ，只有在SDK开发阶段可以。比如，每次你的美术设计师更新文件到asset路径，你可以很快得在开发环境中查看最新版本。</p></div>
+<div class="paragraph"><p>但是对于QA(质量保证)测试和最终版本，应该只使用 <strong>.j3o 文件</strong> 。 J3o是针对JME3应用优化的二进制格式。当你做QA测试或最终版本，使用 <a href="../sdk.html">SDK</a> 来 <a href="../sdk/model_loader_and_viewer.html">转换</a> 所有 .obj/.scene/.xml/.blend 文件到 .j3o 文件，然后更新所有代码到加载 .j3o 文件。默认build script自动打包 .j3o 文件到可执行文件。</p></div>
+<div class="paragraph"><p>在jMonkeyEngine SDK打开你的JME3xiangmu。</p></div>
+<div class="olist arabic"><ol class="arabic"><li><p>在Projects窗口，右键点击 .Blend, .OBJ, or .mesh.xml 文件，然后选择"`Convert to j3o Binary`"。</p></li><li><p>.j3o文件会用同样的名字生成在 .mesh .xml 文件旁。</p></li><li><p>更新所有你的 <code>loadModel()</code> 代码， 比如：</p><div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java">Spatial ninja = assetManager.loadModel(<span class="string"><span class="delimiter">&quot;</span><span class="content">Models/Ninja/Ninja.j3o</span><span class="delimiter">&quot;</span></span>);</code></pre></div></div></li></ol></div>
+<div class="admonitionblock tip"><table><tr><td class="icon"><i class="fa icon-tip" title="Tip"></i></td><td class="content"><div class="paragraph"><p>如果你的可执行程序throws &#8220;Cannot locate resource&#8221; runtime exception(运行异常)，检查所有的加载路径和确保转换所有的模型到.j3o文件！</p></div></td></tr></table></div></div>
+<div class="sect2"><h3 id="加载模型和场景">加载模型和场景</h3><table class="tableblock frame-all grid-all spread"><colgroup><col style="width: 15%;"><col style="width: 85%;"></colgroup><thead><tr><th class="tableblock halign-left valign-top">问题?</th><th class="tableblock halign-left valign-top">解决方法!</th></tr></thead><tbody><tr><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p>加载模型 W/ 材质.</p></div></div></td><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p>用 asset manager 的 <code>loadModel()</code> 函数然后绑定空间体到rootNode</p></div>
 <div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java">Spatial elephant = assetManager.loadModel(<span class="string"><span class="delimiter">&quot;</span><span class="content">Models/Elephant/Elephant.mesh.xml</span><span class="delimiter">&quot;</span></span>);
 rootNode.attachChild(elephant);</code></pre></div></div>
 <div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java">Spatial elephant = assetManager.loadModel(<span class="string"><span class="delimiter">&quot;</span><span class="content">Models/Elephant/Elephant.j3o</span><span class="delimiter">&quot;</span></span>);
-rootNode.attachChild(elephant);</code></pre></div></div></div></td></tr><tr><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p>Load model W/O materials.</p></div></div></td><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p>If you have a model without materials, you have to give it a material to make it visible.</p></div>
+rootNode.attachChild(elephant);</code></pre></div></div></div></td></tr><tr><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p>加载模型 W/O 材质.</p></div></div></td><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p>如果你的模型没有材质，你需要给它材质来让它可见</p></div>
 <div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java">Spatial teapot = assetManager.loadModel(<span class="string"><span class="delimiter">&quot;</span><span class="content">Models/Teapot/Teapot.j3o</span><span class="delimiter">&quot;</span></span>);
-Material mat = <span class="keyword">new</span> Material(assetManager, <span class="string"><span class="delimiter">&quot;</span><span class="content">Common/MatDefs/Misc/ShowNormals.j3md</span><span class="delimiter">&quot;</span></span>); <span class="comment">// default material</span>
+Material mat = <span class="keyword">new</span> Material(assetManager, <span class="string"><span class="delimiter">&quot;</span><span class="content">Common/MatDefs/Misc/ShowNormals.j3md</span><span class="delimiter">&quot;</span></span>); <span class="comment">// 默认材质</span>
 teapot.setMaterial(mat);
-rootNode.attachChild(teapot);</code></pre></div></div></div></td></tr><tr><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p>Load a scene.</p></div></div></td><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p>You load scenes just like you load models:</p></div>
+rootNode.attachChild(teapot);</code></pre></div></div></div></td></tr><tr><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p>加载一个场景</p></div></div></td><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p>加载场景跟加载模型一样</p></div>
 <div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java">Spatial scene = assetManager.loadModel(<span class="string"><span class="delimiter">&quot;</span><span class="content">Scenes/town/main.scene</span><span class="delimiter">&quot;</span></span>);
 rootNode.attachChild(scene);</code></pre></div></div>
 <div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java">Spatial scene = assetManager.loadModel(<span class="string"><span class="delimiter">&quot;</span><span class="content">Scenes/town/main.j3o</span><span class="delimiter">&quot;</span></span>);
 rootNode.attachChild(scene);</code></pre></div></div></div></td></tr></tbody></table></div></div>
-<div class="sect1"><h2 id="excercise-how-to-load-assets">Excercise - How to Load Assets</h2><div class="sectionbody"><div class="paragraph"><p>As an exercise, let&#8217;s try different ways of loading a scene. You will learn how to load the scene directly, or from a zip file.</p></div>
-<div class="olist arabic"><ol class="arabic"><li><p><a href="https://github.com/jMonkeyEngine/wiki/raw/master/src/docs/resources/Scenes/Town/town.zip">Download the town.zip</a> sample scene.</p></li><li><p>(Optional:) Unzip the town.zip to see the structure of the contained Ogre dotScene: You&#8217;ll get a directory named <code>town</code>. It contains XML and texture files, and file called main.scene. (This is just for your information, you do not need to do anything with it.)</p></li><li><p>Place the town.zip file in the top level directory of your JME3 project, like so:</p><div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code>jMonkeyProjects/MyGameProject/assets/
+<div class="sect1"><h2 id="小测试-如何加载资源">小测试 - 如何加载资源</h2><div class="sectionbody"><div class="paragraph"><p>作为测试，让我们尝试用不同方式加载场景。你会学到如何直接加载场景或从zip文件加载。</p></div>
+<div class="olist arabic"><ol class="arabic"><li><p><a href="https://github.com/jMonkeyEngine/wiki/raw/master/src/docs/resources/Scenes/Town/town.zip">下载town.zip</a> 实例场景.</p></li><li><p>(可选：)解压town.zip可以看到Ogre dotScene的格式：你会看到路径名叫 <code>town</code> 。它包含 XML， 贴图，和main.scene 文件。 (这只是附加信息，你不需要对它作什么。)</p></li><li><p>把twon.zip放到项目根目录，类似以下：</p><div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code>jMonkeyProjects/MyGameProject/assets/
 jMonkeyProjects/MyGameProject/build.xml
 jMonkeyProjects/MyGameProject/src/
 jMonkeyProjects/MyGameProject/town.zip
 ...</code></pre></div></div>
-<div class="paragraph"><p>Use the following method to load models from a zip file:</p></div></li><li><p>Verify <code>town.zip</code> is in the project directory.</p></li><li><p>Register a zip file locator to the project directory: Add the following code under <code>simpleInitApp()</code>.</p><div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java">    assetManager.registerLocator(<span class="string"><span class="delimiter">&quot;</span><span class="content">town.zip</span><span class="delimiter">&quot;</span></span>, ZipLocator.class);
+<div class="paragraph"><p>用以下函数从zip文件加载模型：</p></div></li><li><p>确定 <code>town.zip</code> 在项目根目录。</p></li><li><p>登记zip file locator到项目根目录： 在 <code>simpleInitApp()</code> 函数添加以下代码。</p><div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java">    assetManager.registerLocator(<span class="string"><span class="delimiter">&quot;</span><span class="content">town.zip</span><span class="delimiter">&quot;</span></span>, ZipLocator.class);
     Spatial gameLevel = assetManager.loadModel(<span class="string"><span class="delimiter">&quot;</span><span class="content">main.scene</span><span class="delimiter">&quot;</span></span>);
     gameLevel.setLocalTranslation(<span class="integer">0</span>, -<span class="float">5.2f</span>, <span class="integer">0</span>);
     gameLevel.setLocalScale(<span class="integer">2</span>);
     rootNode.attachChild(gameLevel);</code></pre></div></div>
-<div class="paragraph"><p>The loadModel() method now searches this zip directly for the files to load.<br>
-(This means, do not write <code>loadModel(town.zip/main.scene)</code> or similar!)</p></div></li><li><p>Clean, build and run the project.<br>
-You should now see the Ninja+wall+teapot standing in a town.</p></li></ol></div>
-<div class="admonitionblock tip"><table><tr><td class="icon"><i class="fa icon-tip" title="Tip"></i></td><td class="content"><div class="paragraph"><p>If you register new locators, make sure you do not get any file name conflicts: Don&#8217;t name all scenes <code>main.scene</code> but give each scene a unique name.</p></div></td></tr></table></div>
-<div class="paragraph"><p>Earlier in this tutorial, you loaded scenes and models from the asset directory. This is the most common way you will be loading scenes and models. Here is the typical procedure:</p></div>
-<div class="olist arabic"><ol class="arabic"><li><p>Remove the code that you added for the previous exercise.</p></li><li><p>Move the unzipped <code>town/</code> directory into the <code>assets/Scenes/</code> directory of your project.</p></li><li><p>Add the following code under <code>simpleInitApp()</code>.</p><div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java">    Spatial gameLevel = assetManager.loadModel(<span class="string"><span class="delimiter">&quot;</span><span class="content">Scenes/town/main.scene</span><span class="delimiter">&quot;</span></span>);
+<div class="paragraph"><p>loadModel()函数现在可以直接找到要加载的zip文件<br>
+(也就是说，不要写`loadModel(town.zip/main.scene)` 之类的！)</p></div></li><li><p>编译然后运行项目<br>
+你应该看到忍者+墙壁+茶壶”站在”小镇上。</p></li></ol></div>
+<div class="admonitionblock tip"><table><tr><td class="icon"><i class="fa icon-tip" title="Tip"></i></td><td class="content"><div class="paragraph"><p>如果你登记了新的locators，确保你不会有重复文件名：不要命名所有场景 <code>main.scene</code> ，而是给每个场景唯一的名字。</p></div></td></tr></table></div>
+<div class="paragraph"><p>更早的时候，在这教程，你从asset路径加载了场景和模型。这是最普遍的方式加载场景和模型。这是另一种方式：</p></div>
+<div class="olist arabic"><ol class="arabic"><li><p>删掉之前测试里加的代码。</p></li><li><p>把解压的 <code>town/</code> 路径放到项目里 <code>assets/Scenes/</code> 路径。</p></li><li><p>在 <code>simpleInitApp</code> 添加以下代码。</p><div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java">    Spatial gameLevel = assetManager.loadModel(<span class="string"><span class="delimiter">&quot;</span><span class="content">Scenes/town/main.scene</span><span class="delimiter">&quot;</span></span>);
     gameLevel.setLocalTranslation(<span class="integer">0</span>, -<span class="float">5.2f</span>, <span class="integer">0</span>);
     gameLevel.setLocalScale(<span class="integer">2</span>);
     rootNode.attachChild(gameLevel);</code></pre></div></div>
-<div class="paragraph"><p>Note that the path is relative to the <code>assets/…</code> directory.</p></div></li><li><p>Clean, build and run the project.<br>
-Again, you should see the Ninja+wall+teapot standing in a town.</p></li></ol></div>
-<div class="paragraph"><p>Here is a third method you must know, loading a scene/model from a .j3o file:</p></div>
-<div class="olist arabic"><ol class="arabic"><li><p>Remove the code from the previous exercise.</p></li><li><p>If you haven&#8217;t already, open the <a href="../sdk.html">SDK</a> and open the project that contains the HelloAsset class.</p></li><li><p>In the projects window, browse to the <code>assets/Scenes/town</code> directory.</p></li><li><p>Right-click the <code>main.scene</code> and convert the scene to binary: The jMonkeyPlatform generates a main.j3o file.</p></li><li><p>Add the following code under <code>simpleInitApp() {</code></p><div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java">    Spatial gameLevel = assetManager.loadModel(<span class="string"><span class="delimiter">&quot;</span><span class="content">Scenes/town/main.j3o</span><span class="delimiter">&quot;</span></span>);
+<div class="paragraph"><p>注意这里的路径是相对于 <code>assets/&#8230;&#8203;</code> 路径的</p></div></li><li><p>编译和运行项目<br>
+你将又一次看到忍者+墙壁+茶壶站在小镇上。</p></li></ol></div>
+<div class="paragraph"><p>这是第三种方式，你必须知道的：从 .j3o 文件加载场景/模型：</p></div>
+<div class="olist arabic"><ol class="arabic"><li><p>删掉之前加的代码。</p></li><li><p>打开 <a href="../sdk.html">SDK</a> 然后打开HelloAsset的项目，如果你还没有这样做。</p></li><li><p>在projects窗口，找到 <code>assets/Scenes/town</code> 路径。</p></li><li><p>右键点击 <code>main.scene</code> 然后转换场景到二进制： jMonkeyPlatform 会生成 main.j3o 文件</p></li><li><p>在 <code>simpleInitApp()</code> 函数添加以下代码 {`</p><div class="listingblock"><div class="content"><pre class="CodeRay highlight"><code data-lang="java">    Spatial gameLevel = assetManager.loadModel(<span class="string"><span class="delimiter">&quot;</span><span class="content">Scenes/town/main.j3o</span><span class="delimiter">&quot;</span></span>);
     gameLevel.setLocalTranslation(<span class="integer">0</span>, -<span class="float">5.2f</span>, <span class="integer">0</span>);
     gameLevel.setLocalScale(<span class="integer">2</span>);
     rootNode.attachChild(gameLevel);</code></pre></div></div>
-<div class="paragraph"><p>Again, note that the path is relative to the <code>assets/…</code> directory.</p></div></li><li><p>Clean, Build and run the project.<br>
-Again, you should see the Ninja+wall+teapot standing in a town.</p></li></ol></div></div></div>
-<div class="sect1"><h2 id="conclusion">Conclusion</h2><div class="sectionbody"><div class="paragraph"><p>Now you know how to populate the scenegraph with static shapes and models, and how to build scenes. You have learned how to load assets using the <code>assetManager</code> and you have seen that the paths start relative to your project directory. Another important thing you have learned is to convert models to .j3o format for the executable JARs etc.</p></div>
-<div class="paragraph"><p>Let&#8217;s add some action to the scene and continue with the <a href="../jme3/beginner/hello_main_event_loop.html">Update Loop</a>!</p></div>
+<div class="paragraph"><p>同样，注意这里的路径是相对于 <code>assets/&#8230;&#8203;</code> 路径的</p></div></li><li><p>编译和运行项目<br>
+你将再一次看到忍者+墙壁+茶壶站在小镇上。</p></li></ol></div></div></div>
+<div class="sect1"><h2 id="总结">总结</h2><div class="sectionbody"><div class="paragraph"><p>现在你知道如何添加形状和模型到场景图，和如何装换场景。你学会了如何通过 <code>assetManager</code> 加载加载资源和你发现了初始路径是项目的根目录。最后最重要的你知道了对于jar可执行文件，要转换模型到 .j3o 格式</p></div>
+<div class="paragraph"><p>下一章节 <a href="../jme3/beginner/hello_main_event_loop.html">Update Loop</a> ，我们将给场景添加动作</p></div>
 <hr>
-<div class="paragraph"><p><strong>See also:</strong></p></div>
-<div class="ulist"><ul><li><p><a href="../jme3/external/blender.html">The definitive Blender import tutorial</a></p></li><li><p><a href="../jme3/intermediate/multi-media_asset_pipeline.html">Asset pipeline introduction</a></p></li><li><p>If you want to learn how to load sounds, see <a href="../jme3/beginner/hello_audio.html">Hello Audio</a></p></li><li><p>If you want to learn more about loading textures and materials, see <a href="../beginner/hello_material.html">材质</a></p></li></ul></div></div></div></div><div id="footer"><div id="footer-text">Version <br>Last updated 2018-10-03 07:47:49 +00:00</div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script>docsearch({
+<div class="paragraph"><p><strong>了解更多:</strong></p></div>
+<div class="ulist"><ul><li><p><a href="../jme3/external/blender.html">blender导入教程</a></p></li><li><p><a href="../jme3/intermediate/multi-media_asset_pipeline.html">资源管道介绍</a></p></li><li><p>如果你想学习声音, 查看 <a href="../jme3/beginner/hello_audio.html">Hello Audio</a></p></li><li><p>如果你想学习更多关于贴图和材质, 查看 <a href="../beginner/hello_material.html">材质</a></p></li></ul></div></div></div></div><div id="footer"><div id="footer-text">Version <br>Last updated 2018-10-18 01:45:26 +00:00</div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script>docsearch({
   apiKey: 'a736b6d93de805e26ec2f49b55013fbd',
   indexName: 'jmonkeyengine',
   inputSelector: '#doc-search',
